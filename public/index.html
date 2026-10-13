@@ -15,6 +15,7 @@
     --rekishi: #a6502d; --rekishi-soft: #f6e6dc;
     --chiri: #2f6fb0; --chiri-soft: #e3eef9;
     --koumin: #3f7d34; --koumin-soft: #e5f1de;
+    --rika: #1f7f86; --rika-soft: #e0f1f2;
     --on-color: #ffffff;
     --font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
     --font-body: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
@@ -26,6 +27,7 @@
       --rekishi: #e0976f; --rekishi-soft: #3a2a21;
       --chiri: #7db4e8; --chiri-soft: #1f2d3d;
       --koumin: #8cc971; --koumin-soft: #243420;
+    --rika: #5fc4cb; --rika-soft: #1d3436;
       --on-color: #17191c; color-scheme: dark;
     }
   }
@@ -35,6 +37,7 @@
     --rekishi: #e0976f; --rekishi-soft: #3a2a21;
     --chiri: #7db4e8; --chiri-soft: #1f2d3d;
     --koumin: #8cc971; --koumin-soft: #243420;
+    --rika: #5fc4cb; --rika-soft: #1d3436;
     --on-color: #17191c; color-scheme: dark;
   }
   * { box-sizing: border-box; }
@@ -63,6 +66,7 @@
   .rekishi { --c: var(--rekishi); --cs: var(--rekishi-soft); }
   .chiri { --c: var(--chiri); --cs: var(--chiri-soft); }
   .koumin { --c: var(--koumin); --cs: var(--koumin-soft); }
+  .rika { --c: var(--rika); --cs: var(--rika-soft); }
   .soon { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
   .soon li { background: var(--surface-2); color: var(--muted); border-radius: 10px; padding: 8px 16px; font-family: var(--font-display); font-weight: 700; }
   .soon li small { font-weight: 500; margin-left: 6px; }
@@ -110,12 +114,24 @@
     </div>
   </section>
 
+  <section aria-labelledby="rika">
+    <h2 id="rika">理科 <small>レベル1から、じゅんばんに</small></h2>
+    <div class="grid">
+      <a class="card rika" href="https://chugaku-rika1.senta1111.workers.dev/">
+        <div class="top"><span class="tile" aria-hidden="true">理</span><div><div class="name">理科 レベル1</div><div class="count">全20話＋復習＋総復習</div></div></div>
+        <p class="desc">生物・化学・物理・地学を、基礎のことばから1話ずつ。図とクイズで、テストによく出る用語をおさえます。</p>
+        <ul class="tags"><li>基礎のことば</li><li>復習3回</li></ul>
+        <span class="go">理科レベル1をひらく →</span>
+      </a>
+    </div>
+  </section>
+
   <section aria-labelledby="next">
     <h2 id="next">ほかの教科 <small>じゅんびしています</small></h2>
     <ul class="soon">
       <li>国語<small>準備中</small></li>
       <li>数学<small>準備中</small></li>
-      <li>理科<small>準備中</small></li>
+      <li>理科 レベル2〜4<small>準備中</small></li>
       <li>英語<small>準備中</small></li>
     </ul>
   </section>
