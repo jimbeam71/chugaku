@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>中学数学</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<style>
+  /* layout: 1列の読み物。教科・サイトのカードを縦に並べ、広い画面では横並び。 */
+  :root {
+    --bg: #f6f5f1; --surface: #ffffff; --surface-2: #ecebe5;
+    --fg: #23272d; --muted: #646b75; --line: #dcdad2;
+    --rekishi: #a6502d; --rekishi-soft: #f6e6dc;
+    --chiri: #2f6fb0; --chiri-soft: #e3eef9;
+    --koumin: #3f7d34; --koumin-soft: #e5f1de;
+    --rika: #1f7f86; --rika-soft: #e0f1f2;
+    --shakai: #a6502d; --shakai-soft: #f6e6dc;
+    --suugaku: #4a57b0; --suugaku-soft: #e6e8f8;
+    --kokugo: #b04a63; --kokugo-soft: #f8e5ea;
+    --eigo: #9a7418; --eigo-soft: #f5ecd3;
+    --on-color: #ffffff;
+    --font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+    --font-body: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17191c; --surface: #212429; --surface-2: #2b2f35;
+      --fg: #e8e9eb; --muted: #a2a8b1; --line: #373c44;
+      --rekishi: #e0976f; --rekishi-soft: #3a2a21;
+      --chiri: #7db4e8; --chiri-soft: #1f2d3d;
+      --koumin: #8cc971; --koumin-soft: #243420;
+      --rika: #5fc4cb; --rika-soft: #1d3436;
+      --shakai: #e0976f; --shakai-soft: #3a2a21;
+      --suugaku: #9aa5f2; --suugaku-soft: #262a45;
+      --kokugo: #e58aa0; --kokugo-soft: #3d242b;
+      --eigo: #e0be5c; --eigo-soft: #3a3320;
+      --on-color: #17191c; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17191c; --surface: #212429; --surface-2: #2b2f35;
+    --fg: #e8e9eb; --muted: #a2a8b1; --line: #373c44;
+    --rekishi: #e0976f; --rekishi-soft: #3a2a21;
+    --chiri: #7db4e8; --chiri-soft: #1f2d3d;
+    --koumin: #8cc971; --koumin-soft: #243420;
+    --rika: #5fc4cb; --rika-soft: #1d3436;
+    --shakai: #e0976f; --shakai-soft: #3a2a21;
+    --suugaku: #9aa5f2; --suugaku-soft: #262a45;
+    --kokugo: #e58aa0; --kokugo-soft: #3d242b;
+    --eigo: #e0be5c; --eigo-soft: #3a3320;
+    --on-color: #17191c; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.8; padding-inline: 16px; padding-block: 28px 56px; }
+  .wrap { max-width: 880px; margin-inline: auto; display: flex; flex-direction: column; gap: 34px; }
+  header { display: flex; flex-direction: column; gap: 10px; }
+  .eyebrow { font-family: var(--font-display); font-weight: 700; font-size: .82rem; letter-spacing: .12em; color: var(--muted); margin: 0; }
+  h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(1.9rem, 6vw, 2.7rem); line-height: 1.3; margin: 0; text-wrap: balance; }
+  .lead { margin: 0; max-width: 34em; color: var(--muted); }
+  .pts { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 0; padding: 0; list-style: none; }
+  .pts li { font-size: .84rem; font-weight: 700; background: var(--surface-2); border-radius: 999px; padding: 3px 12px; }
+  h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; margin: 0 0 14px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  h2 small { font-size: .82rem; font-weight: 500; color: var(--muted); font-family: var(--font-body); }
+  .crumb { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0; font-family: var(--font-display); font-weight: 700; font-size: .95rem; }
+  .crumb a { color: var(--c, var(--fg)); text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; min-height: 40px; display: inline-flex; align-items: center; }
+  .crumb a:hover { border-color: var(--c, var(--fg)); }
+  .crumb a:focus-visible, .back:focus-visible { outline: 3px solid var(--c, var(--fg)); outline-offset: 2px; }
+  .crumb span { color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .card { display: flex; flex-direction: column; gap: 12px; min-width: 0; text-decoration: none; color: inherit; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; transition: transform .15s, border-color .15s; }
+  a.card:hover { transform: translateY(-2px); border-color: var(--c); }
+  a.card:focus-visible { outline: 3px solid var(--c); outline-offset: 2px; }
+  .card.off { background: var(--surface-2); border-style: dashed; }
+  .card.off .tile { background: var(--line); color: var(--muted); }
+  .top { display: flex; align-items: center; gap: 12px; }
+  .tile { flex: none; width: 52px; height: 52px; border-radius: 12px; background: var(--c); color: var(--on-color); display: grid; place-items: center; font-family: var(--font-display); font-weight: 900; font-size: 1.5rem; }
+  .name { font-family: var(--font-display); font-weight: 900; font-size: 1.3rem; line-height: 1.3; }
+  .count { font-size: .84rem; color: var(--muted); }
+  .desc { margin: 0; font-size: .94rem; line-height: 1.75; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .tags li { font-size: .78rem; font-weight: 700; color: var(--c); background: var(--cs); border-radius: 6px; padding: 1px 8px; }
+  .go { margin-top: auto; font-family: var(--font-display); font-weight: 700; color: var(--c); }
+  .soon-tag { margin-top: auto; font-family: var(--font-display); font-weight: 700; color: var(--muted); }
+  .rekishi { --c: var(--rekishi); --cs: var(--rekishi-soft); }
+  .chiri { --c: var(--chiri); --cs: var(--chiri-soft); }
+  .koumin { --c: var(--koumin); --cs: var(--koumin-soft); }
+  .rika { --c: var(--rika); --cs: var(--rika-soft); }
+  .shakai { --c: var(--shakai); --cs: var(--shakai-soft); }
+  .suugaku { --c: var(--suugaku); --cs: var(--suugaku-soft); }
+  .kokugo { --c: var(--kokugo); --cs: var(--kokugo-soft); }
+  .eigo { --c: var(--eigo); --cs: var(--eigo-soft); }
+  .back { align-self: flex-start; font-family: var(--font-display); font-weight: 700; color: var(--c, var(--fg)); text-decoration: none; padding: 8px 4px; min-height: 44px; display: inline-flex; align-items: center; }
+  .howto { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 6px; }
+  .howto ol { margin: 0 0 12px; padding-left: 1.4em; display: flex; flex-direction: column; gap: 8px; }
+  .howto li::marker { font-weight: 700; color: var(--muted); }
+  footer { color: var(--muted); font-size: .84rem; }
+  @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="suugaku">
+    <p class="crumb"><a href="index.html">中学トップ</a><span aria-hidden="true">›</span><span>数学</span></p>
+    <h1>数学</h1>
+    <p class="lead">マイナスの数や、分数の通分でつまずいたところから、やりなおせます。</p>
+  </header>
+
+  <section aria-label="数学のサイト">
+    <div class="grid">
+      <a class="card suugaku" href="https://chugaku-suugaku.senta1111.workers.dev/"><div class="top"><span class="tile" aria-hidden="true">数</span><div><div class="name">数学 レベル1</div><div class="count">正負の数・分数と通分　全14ステップ</div></div></div><p class="desc">数直線と図で、マイナスの意味から戻ります。かっこをはずすルールや、答えの書き方まで、1ステップ6問前後で練習します。</p><ul class="tags"><li>数直線</li><li>かっこのルール</li><li>通分</li></ul><span class="go">数学レベル1をひらく →</span></a>
+    </div>
+  </section>
+
+  <a class="back suugaku" href="index.html">← 中学トップへもどる</a>
+
+  <footer>やった記録は、この端末のブラウザにだけ保存されます。別の端末では引き継がれません。</footer>
+</div>
+</body>
+</html>
