@@ -130,8 +130,9 @@ const SUBJECTS = {
     ]
   },
   suugaku: {
-    file: 'suugaku.html', cls: 'suugaku', title: '数学', lead: 'マイナスの数や、分数の通分でつまずいたところから、やりなおせます。',
+    file: 'suugaku.html', cls: 'suugaku', title: '数学', lead: '小学校のやりなおし（レベル0）から、マイナスの数や通分（レベル1）まで。つまずいたところから、やりなおせます。',
     cards: [
+      { cls: 'suugaku', tile: '数', name: '数学 レベル0', count: '小学校のやりなおし　全17ステップ', desc: '約数・倍数、小数と分数（0.1＝1/10 を反射で）、分数のかけ算・わり算。中学数学の土台を、1ステップ6問前後で練習します。', tags: ['約数と倍数', '小数と分数', '分数の計算'], href: W('chugaku-suugaku0'), go: '数学レベル0をひらく' },
       { cls: 'suugaku', tile: '数', name: '数学 レベル1', count: '正負の数・分数と通分　全14ステップ', desc: '数直線と図で、マイナスの意味から戻ります。かっこをはずすルールや、答えの書き方まで、1ステップ6問前後で練習します。', tags: ['数直線', 'かっこのルール', '通分'], href: W('chugaku-suugaku'), go: '数学レベル1をひらく' }
     ]
   }
@@ -140,7 +141,7 @@ const SUBJECTS = {
 /* ---- 中学トップのカード（5教科） ---- */
 const TOP = [
   { cls: 'kokugo', tile: '国', name: '国語', count: '準備中', desc: '説明文・論説文の読み方など、じゅんびしています。', tags: null, href: null },
-  { cls: 'suugaku', tile: '数', name: '数学', count: 'レベル1（正負の数・分数と通分）', desc: 'マイナスや通分でつまずいたところから、数直線と図でやりなおします。', tags: ['やりなおし'], href: 'suugaku.html', go: '数学をひらく' },
+  { cls: 'suugaku', tile: '数', name: '数学', count: 'レベル0〜1（小学校のやりなおし・正負の数・通分）', desc: '約数・小数・分数から、マイナスや通分まで。つまずいたところから、図でやりなおします。', tags: ['やりなおし'], href: 'suugaku.html', go: '数学をひらく' },
   { cls: 'eigo', tile: '英', name: '英語', count: '準備中', desc: '単語と文の読み方から、じゅんびしています。', tags: null, href: null },
   { cls: 'rika', tile: '理', name: '理科', count: 'レベル0〜4 ＋ しあげ（記述式）', desc: 'ひきょうな裏技から入試レベルまで。レベルをじゅんばんに進められます。', tags: ['全6サイト', '記述式あり'], href: 'rika.html', go: '理科をひらく' },
   { cls: 'shakai', tile: '社', name: '社会', count: '歴史・地理・公民 ＋ しあげ（記述式）', desc: '時代の流れ、地図、くらしのしくみ。3つの教科と、理由を書く記述式があります。', tags: ['全4サイト', '記述式あり'], href: 'shakai.html', go: '社会をひらく' }
