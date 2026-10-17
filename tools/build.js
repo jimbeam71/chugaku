@@ -91,6 +91,16 @@ const CSS = `
   .howto { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 6px; }
   .howto ol { margin: 0 0 12px; padding-left: 1.4em; display: flex; flex-direction: column; gap: 8px; }
   .howto li::marker { font-weight: 700; color: var(--muted); }
+  .toc { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 6px 18px; margin: 0; list-style: none; }
+  .toc li { padding: 14px 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
+  .toc li:first-child { border-top: 0; }
+  .toc .lv { font-family: var(--font-display); font-weight: 900; font-size: 1.05rem; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .toc .lv a { color: var(--c); text-decoration: none; }
+  .toc .lv a:hover { text-decoration: underline; }
+  .toc .st { font-size: .74rem; font-weight: 700; border-radius: 6px; padding: 1px 8px; background: var(--cs); color: var(--c); }
+  .toc .st.plan { background: var(--surface-2); color: var(--muted); border: 1px dashed var(--line); }
+  .toc .units { margin: 0; font-size: .9rem; line-height: 1.7; color: var(--fg); }
+  .toc li.plan .lv { color: var(--muted); }
   footer { color: var(--muted); font-size: .84rem; }
   @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
 `;
@@ -131,6 +141,15 @@ const SUBJECTS = {
   },
   suugaku: {
     file: 'suugaku.html', cls: 'suugaku', title: '数学', lead: '小学校のやりなおし（レベル0）から、マイナスの数や通分（レベル1）まで。つまずいたところから、やりなおせます。',
+    toc: [
+      { lv: 'レベル0　小学校のやりなおし', href: W('chugaku-suugaku0'), units: '倍数と約数 ／ 小数と分数 ／ 分数の計算 ／ 割合・比・速さ' },
+      { lv: 'レベル1　正負の数・通分', href: W('chugaku-suugaku'), units: '数直線とマイナス ／ 足し算・引き算 ／ かっこのルール ／ 分数と通分' },
+      { lv: 'レベル2　かけ算・わり算と文字の入り口', href: null, units: '負の数のかけ算・わり算 ／ 累乗と計算の順序 ／ ＝の意味と逆算 ／ 文字式のはじめ' },
+      { lv: 'レベル3　文字式と方程式', href: null, units: '文字式のきまり ／ 式の計算 ／ 一次方程式 ／ 方程式の文章題' },
+      { lv: 'レベル4　比例・反比例とグラフ', href: null, units: '座標 ／ 比例 ／ 反比例 ／ グラフの読み書き' },
+      { lv: 'レベル5　図形', href: null, units: '単位換算 ／ 角度 ／ 面積・体積 ／ 円とおうぎ形 ／ 作図' },
+      { lv: 'レベル6　データと確率', href: null, units: '平均・中央値 ／ 度数分布 ／ 確率のはじめ' }
+    ],
     cards: [
       { cls: 'suugaku', tile: '数', name: '数学 レベル0', count: '小学校のやりなおし　全22ステップ', desc: '約数・倍数、小数と分数（0.1＝1/10 を反射で）、分数のかけ算・わり算、割合・比・速さ。中学数学の土台を、1ステップ6問前後で練習します。', tags: ['約数と倍数', '小数と分数', '分数の計算', '割合・速さ'], href: W('chugaku-suugaku0'), go: '数学レベル0をひらく' },
       { cls: 'suugaku', tile: '数', name: '数学 レベル1', count: '正負の数・分数と通分　全14ステップ', desc: '数直線と図で、マイナスの意味から戻ります。かっこをはずすルールや、答えの書き方まで、1ステップ6問前後で練習します。', tags: ['数直線', 'かっこのルール', '通分'], href: W('chugaku-suugaku'), go: '数学レベル1をひらく' }
@@ -163,6 +182,7 @@ Object.keys(SUBJECTS).forEach(k => {
   const S = SUBJECTS[k];
   const body =
     '  <header class="' + S.cls + '">\n    <p class="crumb"><a href="index.html">中学トップ</a><span aria-hidden="true">›</span><span>' + S.title + '</span></p>\n    <h1>' + S.title + '</h1>\n    <p class="lead">' + S.lead + '</p>\n  </header>\n\n' +
+    (S.toc ? '  <section aria-labelledby="toc">\n    <h2 id="toc">もくじ <small>' + S.title + 'の全体のながれ（予定をふくむ）</small></h2>\n    <ol class="toc">\n' + S.toc.map(t => '      <li class="' + (t.href ? '' : 'plan') + '"><div class="lv">' + (t.href ? '<a href="' + t.href + '">' + t.lv + '</a><span class="st">公開中</span>' : t.lv + '<span class="st plan">じゅんびちゅう</span>') + '</div><p class="units">' + t.units + '</p></li>').join('\n') + '\n    </ol>\n  </section>\n\n' : '') +
     '  <section aria-label="' + S.title + 'のサイト">\n    <div class="grid">\n' + S.cards.map(c => '      ' + card(c)).join('\n') + '\n    </div>\n  </section>\n\n' +
     '  <a class="back ' + S.cls + '" href="index.html">← 中学トップへもどる</a>\n\n  ' + NOTE;
   fs.writeFileSync(path.join(OUT, S.file), page('中学' + S.title, body));

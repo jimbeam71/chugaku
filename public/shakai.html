@@ -95,6 +95,16 @@
   .howto { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 6px; }
   .howto ol { margin: 0 0 12px; padding-left: 1.4em; display: flex; flex-direction: column; gap: 8px; }
   .howto li::marker { font-weight: 700; color: var(--muted); }
+  .toc { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 6px 18px; margin: 0; list-style: none; }
+  .toc li { padding: 14px 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
+  .toc li:first-child { border-top: 0; }
+  .toc .lv { font-family: var(--font-display); font-weight: 900; font-size: 1.05rem; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .toc .lv a { color: var(--c); text-decoration: none; }
+  .toc .lv a:hover { text-decoration: underline; }
+  .toc .st { font-size: .74rem; font-weight: 700; border-radius: 6px; padding: 1px 8px; background: var(--cs); color: var(--c); }
+  .toc .st.plan { background: var(--surface-2); color: var(--muted); border: 1px dashed var(--line); }
+  .toc .units { margin: 0; font-size: .9rem; line-height: 1.7; color: var(--fg); }
+  .toc li.plan .lv { color: var(--muted); }
   footer { color: var(--muted); font-size: .84rem; }
   @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
 </style>
