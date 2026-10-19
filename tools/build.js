@@ -173,7 +173,8 @@ const SUBJECTS = {
       { cls: 'suugaku', tile: '数', name: '数学 レベル12', count: '二次方程式と関数 y＝ax²　全6ステップ', desc: '因数分解・平方根・解の公式による二次方程式と、放物線のグラフ、変化の割合、利用の問題まで。', tags: ['二次方程式','解の公式','y＝ax²'], href: W('chugaku-suugaku12'), go: '数学レベル12をひらく' },
       { cls: 'suugaku', tile: '数', name: '数学 レベル13', count: '相似・円周角・三平方・標本調査　全7ステップ', desc: '相似と平行線と比、面積比・体積比から、円周角、三平方の定理、標本調査まで。図を見ながら進めます。', tags: ['相似','円周角・三平方','標本調査'], href: W('chugaku-suugaku13'), go: '数学レベル13をひらく' },
       { cls: 'suugaku', tile: '数', name: '数学 公式テスト', count: '中1〜中3の公式まとめ　全10ステップ', desc: '計算・関数・図形・立体・データの公式を、まとめて見て、テストで確認します。テスト前の総ざらいに。', tags: ['公式まとめ','テスト','総ざらい'], href: W('chugaku-suugaku-koushiki'), go: '数学の公式テストをひらく' },
-      { cls: 'suugaku', tile: '数', name: '数学 確率の裏技', count: '高校数学のCとPで解く　全49問', desc: '高校受験の確率を、高校数学の「組み合わせC・順列P」で一気に解くコツ。さいころ・硬貨・背番号の問題を、国語のテストのように処理します。', tags: ['確率','C・P','裏技'], href: W('chugaku-suugaku-kakuritsu'), go: '数学の確率の裏技をひらく' }
+      { cls: 'suugaku', tile: '数', name: '数学 確率の裏技', count: '高校数学のCとPで解く　全49問', desc: '高校受験の確率を、高校数学の「組み合わせC・順列P」で一気に解くコツ。さいころ・硬貨・背番号の問題を、国語のテストのように処理します。', tags: ['確率','C・P','裏技'], href: W('chugaku-suugaku-kakuritsu'), waza: true, go: '数学の確率の裏技をひらく' },
+      { cls: 'suugaku', tile: '数', name: '数学 関数の面積の裏技', count: '放物線と直線を一気に解く　全68問', desc: '放物線 y＝ax² 上の2点なら、傾き・切片・面積が x 座標だけで出せます。連立方程式なしで、関数の大問を速く解くコツ。', tags: ['関数','面積','裏技'], href: W('chugaku-suugaku-waza-kansuu'), waza: true, go: '数学の関数の面積の裏技をひらく' }
     ]
   }
 };
@@ -204,7 +205,8 @@ Object.keys(SUBJECTS).forEach(k => {
   const body =
     '  <header class="' + S.cls + '">\n    <p class="crumb"><a href="index.html">中学トップ</a><span aria-hidden="true">›</span><span>' + S.title + '</span></p>\n    <h1>' + S.title + '</h1>\n    <p class="lead">' + S.lead + '</p>\n  </header>\n\n' +
     (S.toc ? '  <section aria-labelledby="toc">\n    <h2 id="toc">もくじ <small>' + S.title + 'の全体のながれ（予定をふくむ）</small></h2>\n    <ol class="toc">\n' + S.toc.map(t => '      <li class="' + (t.href ? '' : 'plan') + '"><div class="lv">' + (t.href ? '<a href="' + t.href + '">' + t.lv + '</a><span class="st">公開中</span>' : t.lv + '<span class="st plan">じゅんびちゅう</span>') + '</div><p class="units">' + t.units + '</p></li>').join('\n') + '\n    </ol>\n  </section>\n\n' : '') +
-    '  <section aria-label="' + S.title + 'のサイト">\n    <div class="grid">\n' + S.cards.map(c => '      ' + card(c)).join('\n') + '\n    </div>\n  </section>\n\n' +
+    '  <section aria-label="' + S.title + 'のサイト">\n    <div class="grid">\n' + S.cards.filter(c => !c.waza).map(c => '      ' + card(c)).join('\n') + '\n    </div>\n  </section>\n\n' +
+    (S.cards.some(c => c.waza) ? '  <section aria-labelledby="waza">\n    <h2 id="waza">裏技シリーズ <small>平均点より上をめざす人向け</small></h2>\n    <div class="grid">\n' + S.cards.filter(c => c.waza).map(c => '      ' + card(c)).join('\n') + '\n    </div>\n  </section>\n\n' : '') +
     '  <a class="back ' + S.cls + '" href="index.html">← 中学トップへもどる</a>\n\n  ' + NOTE;
   fs.writeFileSync(path.join(OUT, S.file), page('中学' + S.title, body));
 });
