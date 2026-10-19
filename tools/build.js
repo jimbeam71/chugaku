@@ -177,7 +177,8 @@ const SUBJECTS = {
       { cls: 'suugaku', tile: '数', name: '数学 関数の面積の裏技', count: '放物線と直線を一気に解く　全68問', desc: '放物線 y＝ax² 上の2点なら、傾き・切片・面積が x 座標だけで出せます。連立方程式なしで、関数の大問を速く解くコツ。', tags: ['関数','面積','裏技'], href: W('chugaku-suugaku-waza-kansuu'), waza: true, go: '数学の関数の面積の裏技をひらく' },
       { cls: 'suugaku', tile: '数', name: '数学 相似・面積比の裏技', count: '図形の面積を比で解く　全56問', desc: '相似比は2乗、同じ高さなら底辺の比、台形の対角線は a²・ab・ab・b²。補助線なしで、図形の面積の大問を速く解くコツ。', tags: ['相似','面積比','裏技'], href: W('chugaku-suugaku-waza-souji'), waza: true, go: '数学の相似・面積比の裏技をひらく' },
       { cls: 'suugaku', tile: '数', name: '数学 角度の裏技', count: '…全63問', desc: '外角・ブーメラン・星形・平行線・円周角を、補助線なしで一気に解く', tags: ['角度','外角','円周角','裏技'], href: W('chugaku-suugaku-waza-kakudo'), waza: true, go: '数学の角度の裏技をひらく' },
-      { cls: 'suugaku', tile: '数', name: '数学 規則性の裏技', count: '…全90問', desc: 'n番目の式・個数・和・マッチ棒・周期・カレンダー・群数列を、書き出さずに一気に解く', tags: ['規則性','数列','n番目','裏技'], href: W('chugaku-suugaku-waza-kisoku'), waza: true, go: '数学の規則性の裏技をひらく' }
+      { cls: 'suugaku', tile: '数', name: '数学 規則性の裏技', count: '…全90問', desc: 'n番目の式・個数・和・マッチ棒・周期・カレンダー・群数列を、書き出さずに一気に解く', tags: ['規則性','数列','n番目','裏技'], href: W('chugaku-suugaku-waza-kisoku'), waza: true, go: '数学の規則性の裏技をひらく' },
+      { cls: 'suugaku', tile: '数', name: '数学 平方根の裏技', count: '…全83問', desc: '近似値・小数点の移動・整数部分と小数部分・ルートの中を整数にする、入試の定番を一気に解く', tags: ['平方根','ルート','整数部分','裏技'], href: W('chugaku-suugaku-waza-root'), waza: true, go: '数学の平方根の裏技をひらく' }
     ]
   }
 };
