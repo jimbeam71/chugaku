@@ -185,9 +185,9 @@ const SUBJECTS = {
 
 /* ---- 中学トップのカード（5教科） ---- */
 const TOP = [
-  { cls: 'kokugo', tile: '国', name: '国語', count: '準備中', desc: '説明文・論説文の読み方など、じゅんびしています。', tags: null, href: null },
+  { cls: 'kokugo', tile: '国', name: '国語', count: 'レベル0〜1（ことばの力・1文を読む）', desc: '短い文章で、ことばと読み取りを同時に練習。理科・社会の知識も身につきます。答え方のルールつき。', tags: ['短文読解', 'ことばのルール'], href: 'https://chugaku-kokugo.senta1111.workers.dev/', go: '国語をひらく' },
   { cls: 'suugaku', tile: '数', name: '数学', count: 'レベル0〜13（小学校のやりなおし・正負の数・方程式・比例反比例・平面図形・空間図形・データの活用・式の計算と連立方程式・一次関数・図形の性質と確率・展開因数分解平方根・二次方程式と関数・相似円周角三平方標本調査）', desc: '約数・小数・分数から、マイナスや通分、方程式、比例・反比例まで。つまずいたところから、図でやりなおします。', tags: ['やりなおし'], href: 'suugaku.html', go: '数学をひらく' },
-  { cls: 'eigo', tile: '英', name: '英語', count: '準備中', desc: '単語と文の読み方から、じゅんびしています。', tags: null, href: null },
+  { cls: 'eigo', tile: '英', name: '英語', count: 'ゼロから英語（第0〜43章）', desc: '単語・語順から、be動詞・一般動詞・can・疑問詞・進行形・命令文・過去形まで。音声つき、1問ずつ進めます。', tags: ['日本語訳つき', '音声つき'], href: 'https://chugaku-eigo.senta1111.workers.dev/', go: '英語をひらく' },
   { cls: 'rika', tile: '理', name: '理科', count: 'レベル0〜4 ＋ しあげ（記述式）', desc: 'ひきょうな裏技から入試レベルまで。レベルをじゅんばんに進められます。', tags: ['全6サイト', '記述式あり'], href: 'rika.html', go: '理科をひらく' },
   { cls: 'shakai', tile: '社', name: '社会', count: '歴史・地理・公民 ＋ しあげ（記述式）', desc: '時代の流れ、地図、くらしのしくみ。3つの教科と、理由を書く記述式があります。', tags: ['全4サイト', '記述式あり'], href: 'shakai.html', go: '社会をひらく' }
 ];
@@ -198,7 +198,7 @@ const NOTE = '<footer>やった記録は、この端末のブラウザにだけ�
 
 /* 中学トップ */
 const topBody =
-  '  <header>\n    <p class="eyebrow">無料・登録なし・スマホでOK</p>\n    <h1>中学自習サイト</h1>\n    <p class="lead">学校に行けない日も、授業がわからなくなった日も。1話ずつ、やさしい言葉で、ひとりで進められる教材です。平均点をめざす人も、その先をねらう人も使えます。</p>\n    <ul class="pts">\n      <li>音読と4択で定着</li>\n      <li>各話に「裏話」つき</li>\n      <li>記録はこの端末に保存</li>\n    </ul>\n  </header>\n\n' +
+  '  <header>\n    <h1>中学自習サイト</h1>\n    <p class="lead">学校に行けない日も、授業がわからなくなった日も。1話ずつ、やさしい言葉で、ひとりで進められる教材です。平均点をめざす人も、その先をねらう人も使えます。</p>\n    <ul class="pts">\n      <li>音読と4択で定着</li>\n      <li>各話に「裏話」つき</li>\n      <li>記録はこの端末に保存</li>\n    </ul>\n  </header>\n\n' +
   '  <section aria-labelledby="kyoka">\n    <h2 id="kyoka">教科をえらぶ <small>どの教科から始めてもOKです</small></h2>\n    <div class="grid">\n' + TOP.map(c => '      ' + card(c)).join('\n') + '\n    </div>\n  </section>\n\n' +
   '  <section class="howto" aria-labelledby="how">\n    <h2 id="how">つかいかた</h2>\n    <ol>\n      <li>教科をえらんで、「1話」から順に進めます。</li>\n      <li>本文を声に出して3回読み、問題をときます。まちがえても大丈夫です。</li>\n      <li>同じ話を、何も見ずに全問正解できるまで、くり返します。目安は5回です。</li>\n    </ol>\n  </section>\n\n  ' + NOTE;
 fs.writeFileSync(path.join(OUT, 'index.html'), page('中学自習サイト', topBody));
