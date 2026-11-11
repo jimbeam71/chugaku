@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>引っ越しました</title>
+</head>
+<body style="font-family:sans-serif;padding:24px;line-height:1.8">
+<p>新しい場所に移動しています…</p>
+<p><a id="go" href="{{NEW}}">移動しないときは、ここをタップ</a></p>
+<script>
+(function(){
+  var url = "{{NEW}}";
+  try {
+    var d = {};
+    for (var i = 0; i < localStorage.length; i++) {
+      var k = localStorage.key(i);
+      if (k && k.indexOf("suugaku-") === 0) d[k] = localStorage.getItem(k);
+    }
+    if (Object.keys(d).length) url += "#migrate=" + encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(d)))));
+  } catch (e) {}
+  document.getElementById("go").href = url;
+  location.replace(url);
+})();
+</script>
+</body>
+</html>
