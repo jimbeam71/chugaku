@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>酸と塩基の反応｜化学基礎</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f6f4;--grid:rgba(48,120,110,.11);--card:#fff;--fg:#1d2a35;--muted:#55677a;--line:#d3dfe1;--ink:#1f6f7a;--ink-fg:#fff;--good:#187a47;--good-bg:#e4f4ea;--bad:#b3261e;--bad-bg:#fbe9e7;--hl:#ffe27a;--red:#d4442a;--blue:#2a68d4;
+--font-head:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;--font-body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic","Meiryo",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a21;--grid:rgba(150,205,215,.07);--card:#1b2630;--fg:#e8eef3;--muted:#9fb2c1;--line:#2d3d4a;--ink:#7fd0d8;--ink-fg:#0f1a2e;--good:#5bd592;--good-bg:#17342a;--bad:#ff8a80;--bad-bg:#3a2024;--hl:#6b5a14;--red:#ff8d6e;--blue:#6ea8ff;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background-color:var(--bg);color:var(--fg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;font-family:var(--font-body);font-size:17px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 56px}
+main{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+h1,h2,h3{font-family:var(--font-head);text-wrap:balance;margin:0;line-height:1.35}
+h1{font-size:1.8rem}h2{font-size:1.25rem}h3{font-size:1.05rem}p{margin:0}
+sub,sup{line-height:0}
+.kicker{font-family:var(--font-head);font-weight:700;font-size:.85rem;letter-spacing:.12em;color:var(--muted)}
+.lead{color:var(--muted);margin-top:6px}
+.streak{margin:12px 0 0;padding:10px 14px;border-radius:12px;border:2px solid var(--line);background:var(--card);font-weight:700;line-height:1.6}
+.streak small{display:block;font-weight:400;color:var(--muted);font-size:.82rem}
+.streak.on{border-color:#e8a33d;background:#fff7e6;color:#3a2a00}.streak.on small{color:#6b5a30}
+.topnav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.topnav a{font:700 .95rem var(--font-head);color:var(--ink);text-decoration:none;background:var(--card);border:2px solid var(--line);border-radius:999px;padding:8px 16px;min-height:44px;display:inline-flex;align-items:center}
+.topnav a:hover{border-color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.btn{font:inherit;font-family:var(--font-head);font-weight:700;cursor:pointer;border:0;border-radius:12px;background:var(--ink);color:var(--ink-fg);padding:14px 18px;min-height:52px;font-size:1.02rem}
+.btn.sub{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>.btn{flex:1 1 140px}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.back{font:inherit;background:none;border:0;color:var(--ink);cursor:pointer;padding:4px 0;text-align:left;font-weight:700;align-self:flex-start;min-height:44px}
+.steplist{display:flex;flex-direction:column;gap:10px}
+.step{font:inherit;text-align:left;cursor:pointer;display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--fg)}
+.step:hover{border-color:var(--ink)}
+.step .no{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--ink-fg);font:700 1rem var(--font-head);display:grid;place-items:center}
+.step.clear .no{background:var(--good);color:#fff}
+.step b{display:block;font-family:var(--font-head);font-size:1.05rem;line-height:1.4}
+.step span.s{display:block;font-size:.82rem;color:var(--muted);line-height:1.5}
+.step .sc{font:700 .95rem var(--font-head);color:var(--muted);white-space:nowrap}.step.clear .sc{color:var(--good)}
+.dots{display:flex;gap:6px}.dot{flex:1 1 0;height:8px;border-radius:4px;background:var(--line)}
+.dot.done{background:var(--ink)}.dot.now{background:var(--hl);outline:2px solid var(--ink);outline-offset:-2px}
+.qno{font-family:var(--font-head);font-weight:700;color:var(--muted);font-size:.9rem}
+.q{font-size:1.12rem;line-height:1.9}
+.choices{display:grid;gap:10px}
+.ch{font:inherit;cursor:pointer;display:flex;align-items:center;gap:12px;text-align:left;min-height:58px;padding:10px 14px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--fg);min-width:0}
+.ch .mk{flex:0 0 30px;height:30px;border-radius:50%;border:2px solid var(--muted);color:var(--muted);font:700 .85rem var(--font-head);display:grid;place-items:center}
+.ch .ct{flex:1 1 auto;min-width:0;font-size:1.08rem}.ch .res{flex:0 0 auto;font:700 1.3rem var(--font-head)}
+.ch:not(.done):hover{border-color:var(--ink)}
+.ch.right{border-color:var(--good);background:var(--good-bg)}.ch.right .res{color:var(--good)}
+.ch.miss{border-color:var(--bad);background:var(--bad-bg);border-style:dashed}.ch.miss .res{color:var(--bad)}
+.ch.shown{box-shadow:0 0 0 3px var(--ink)}
+.fb{display:flex;flex-direction:column;gap:12px}
+.why{border-radius:12px;padding:12px 14px;background:var(--bad-bg);border-left:5px solid var(--bad)}
+.why.ok{background:var(--good-bg);border-left-color:var(--good)}
+.why .h{font-family:var(--font-head);font-weight:700;margin-bottom:2px}
+.steps{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:6px}
+.point{border-radius:12px;padding:10px 14px;background:color-mix(in srgb,var(--hl) 55%,var(--card))}
+.hint{color:var(--muted);font-size:.88rem}.cap{color:var(--muted);font-size:.9rem}
+.score{font-family:var(--font-head);font-size:2.4rem;font-weight:700;line-height:1.2}
+.miss-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.miss-list li{padding:10px 12px;border-radius:10px;border:1px solid var(--line)}
+.rvs{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 14px}
+.rvs>summary{cursor:pointer;font:700 1.05rem var(--font-head);padding:12px 0;min-height:44px}
+.rvs[open]>summary{border-bottom:1px solid var(--line);margin-bottom:12px}
+.rvs .stack{display:flex;flex-direction:column;gap:14px;padding-bottom:14px}
+.rv{background:var(--bg)}
+.rv-ch{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rv-ch li{display:flex;gap:10px;border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--card);min-width:0}
+.rv-ch li.ok{border-color:var(--good);background:var(--good-bg)}
+.rv-m{flex:0 0 1.4em;font:700 1.1rem var(--font-head)}.rv-why{font-size:.88rem;color:var(--muted)}
+.rtab{border-collapse:collapse;margin:10px 0 0;max-width:100%;display:block;overflow-x:auto}
+.rtab th,.rtab td{padding:6px 10px;border-bottom:1px solid var(--line);white-space:nowrap;text-align:left}
+.dg{width:100%;height:auto;display:block}
+.dg text{text-anchor:middle;fill:var(--fg);font-family:var(--font-body)}
+.dg-c{fill:var(--ink)}.dg-b{fill:var(--card);stroke:var(--ink);stroke-width:2}
+.dg-h{font:700 17px var(--font-head);fill:var(--ink-fg)!important}.dg-w{font:700 10px var(--font-body);fill:#fff!important}
+.dg-h2{font:13px var(--font-body);fill:var(--ink-fg)!important}
+.dg-t{font:700 15px var(--font-head)}.dg-s{font:13px var(--font-body);fill:var(--muted)}
+.dg-n{font:700 13px var(--font-body);fill:var(--ink)!important}.dg-n2{font:13px var(--font-body);fill:var(--muted)}.dg-n3 text{font:700 13px var(--font-body)}
+.dg-a{stroke:var(--ink);stroke-width:2.5;fill:none}
+footer{color:var(--muted);font-size:.82rem;text-align:center}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+var D = {"key":"sanenki","title":"酸と塩基の反応","sub":"酸・塩基の性質、pH、中和反応、中和滴定","lead":"酸は H⁺ を出すもの、塩基は OH⁻ を出す（または H⁺ を受け取る）もの。pH と中和の計算を、順に進めます。","steps":[{"id":"s1","title":"酸・塩基と価数・強弱","sub":"どんな物質が酸で、何価で、強いのか","intro":"\u003cb>酸\u003c/b>は水にとけて H\u003csup>+\u003c/sup> を出す物質、\u003cb>塩基\u003c/b>は OH\u003csup>-\u003c/sup> を出す物質（NH\u003csub>3\u003c/sub> のように、H\u003csup>+\u003c/sup> を受け取る物質も塩基）。\u003cbr>\u003cb>価数\u003c/b>は、酸1個が出せる H\u003csup>+\u003c/sup> の数、塩基1個が出せる OH\u003csup>-\u003c/sup>（または受け取れる H\u003csup>+\u003c/sup>）の数。\u003cbr>強酸：HCl、HNO\u003csub>3\u003c/sub>、H\u003csub>2\u003c/sub>SO\u003csub>4\u003c/sub>　弱酸：CH\u003csub>3\u003c/sub>COOH、H\u003csub>2\u003c/sub>CO\u003csub>3\u003c/sub>、H\u003csub>2\u003c/sub>S、(COOH)\u003csub>2\u003c/sub>\u003cbr>強塩基：NaOH、KOH、Ca(OH)\u003csub>2\u003c/sub>、Ba(OH)\u003csub>2\u003c/sub>　弱塩基：NH\u003csub>3\u003c/sub>、Mg(OH)\u003csub>2\u003c/sub>、Cu(OH)\u003csub>2\u003c/sub>\u003cbr>\u003cb>電離度\u003c/b> ＝ 電離した物質の量 ÷ とかした物質の量。強酸・強塩基は電離度がほぼ1、弱酸・弱塩基は1よりずっと小さい。","qs":[{"p":"硫酸 H_{2}SO_{4} は何価の酸ですか。","fig":"","ch":[{"t":"2価","why":""},{"t":"1価","why":"塩酸 HCl と混同しています。H_{2}SO_{4} は H^{+} を2個出せます。"},{"t":"3価","why":"H^{+} になるのは H の2個だけです。S は数えません。"},{"t":"4価","why":"O が4個ありますが、O は H^{+} になりません。"}],"ans":0,"steps":["H_{2}SO_{4} → 2H^{+} ＋ SO_{4}^{2-}","H^{+} が2個出るので、2価。"],"point":"価数 ＝ 電離して出る H^{+}（酸）／OH^{-}（塩基）の数。"},{"p":"酢酸 CH_{3}COOH は何価の酸ですか。","fig":"","ch":[{"t":"1価","why":""},{"t":"2価","why":"H のうち2個が H^{+} になると考えています。酢酸は1個だけです。"},{"t":"3価","why":"CH_{3} の H（3個）を数えています。CH_{3} の H は H^{+} になりません。"},{"t":"4価","why":"H を4個ぜんぶ数えています。H^{+} になるのは -COOH の H 1個だけです。"}],"ans":0,"steps":["CH_{3}COOH → CH_{3}COO^{-} ＋ H^{+}","H^{+} になるのは、-COOH の H の1個だけ。"],"point":"化学式の H の数 ≠ 価数。酢酸は H が4個あっても1価。"},{"p":"次のうち、強酸の組み合わせはどれですか。","fig":"","ch":[{"t":"HCl と HNO_{3}","why":""},{"t":"HCl と CH_{3}COOH","why":"CH_{3}COOH（酢酸）は弱酸です。"},{"t":"CH_{3}COOH と H_{2}CO_{3}","why":"どちらも弱酸です。"},{"t":"HNO_{3} と H_{2}S","why":"H_{2}S（硫化水素）は弱酸です。"}],"ans":0,"steps":["強酸は、HCl（塩酸）、HNO_{3}（硝酸）、H_{2}SO_{4}（硫酸）。","弱酸は、CH_{3}COOH、H_{2}CO_{3}、H_{2}S など。"],"point":"強酸は3つ（HCl、HNO_{3}、H_{2}SO_{4}）だけ覚える。"},{"p":"同じ濃度（0.10 mol/L）の塩酸と酢酸水溶液で、H^{+} の濃度が大きいのはどちらですか。","fig":"","ch":[{"t":"塩酸","why":""},{"t":"酢酸","why":"酢酸は弱酸で、電離度が小さく、H^{+} をあまり出しません。"},{"t":"同じ","why":"どちらも1価の酸ですが、電離度がちがうので H^{+} の濃度はちがいます。"},{"t":"比べられない","why":"電離度（強酸は約1、弱酸は小さい）を使うと比べられます。"}],"ans":0,"steps":["塩酸（強酸）は電離度がほぼ1。ほとんどぜんぶが H^{+} と Cl^{-} になる。","酢酸（弱酸）は電離度が小さく、ほとんどが分子のまま。"],"point":"同じ濃度・同じ価数なら、H^{+} の濃度は 電離度の大きいほう（強酸）が大きい。"},{"p":"次のうち、2価の塩基はどれですか。","fig":"","ch":[{"t":"Ca(OH)_{2}","why":""},{"t":"NaOH","why":"OH^{-} を1個しか出さない1価の塩基です。"},{"t":"NH_{3}","why":"H^{+} を1個受け取る1価の塩基です。"},{"t":"KOH","why":"OH^{-} を1個しか出さない1価の塩基です。"}],"ans":0,"steps":["Ca(OH)_{2} → Ca^{2+} ＋ 2OH^{-}","OH^{-} が2個出るので、2価。"],"point":"( ) の外の数字（OH の個数）が、塩基の価数のめやす。"}]},{"id":"s2","title":"水素イオン濃度とpH","sub":"[H⁺] から pH を出す、pH の大小の意味","intro":"pH は酸性・塩基性の強さをあらわす数。\u003cb>[H\u003csup>+\u003c/sup>] ＝ 1.0×10\u003csup>-n\u003c/sup> mol/L のとき pH ＝ n\u003c/b>。pH 7 が中性、7 より小さいと酸性、大きいと塩基性（25℃）。\u003cbr>水の中では \u003cb>[H\u003csup>+\u003c/sup>][OH\u003csup>-\u003c/sup>] ＝ 1.0×10\u003csup>-14\u003c/sup>\u003c/b>（mol/L）²。\u003cbr>酸の [H\u003csup>+\u003c/sup>] ＝ \u003cb>濃度 × 価数 × 電離度\u003c/b>。強酸なら電離度は1。\u003cbr>pH が 1 小さくなると、[H\u003csup>+\u003c/sup>] は\u003cb>10倍\u003c/b>。","fig":"\u003csvg class=\"dg\" viewBox=\"0 0 440 150\" role=\"img\" aria-label=\"pHの目盛りの図\">\u003cdefs>\u003clinearGradient id=\"phg\" x1=\"0\" x2=\"1\">\u003cstop offset=\"0\" stop-color=\"#d4442a\"/>\u003cstop offset=\".5\" stop-color=\"#6fbf73\"/>\u003cstop offset=\"1\" stop-color=\"#2a68d4\"/>\u003c/linearGradient>\u003c/defs>\u003crect x=\"20\" y=\"50\" width=\"400\" height=\"26\" rx=\"6\" fill=\"url(#phg)\"/>\u003cg class=\"dg-n3\">\u003ctext x=\"20.0\" y=\"98\" text-anchor=\"middle\">0\u003c/text>\u003ctext x=\"48.6\" y=\"98\" text-anchor=\"middle\">1\u003c/text>\u003ctext x=\"77.1\" y=\"98\" text-anchor=\"middle\">2\u003c/text>\u003ctext x=\"105.7\" y=\"98\" text-anchor=\"middle\">3\u003c/text>\u003ctext x=\"134.3\" y=\"98\" text-anchor=\"middle\">4\u003c/text>\u003ctext x=\"162.9\" y=\"98\" text-anchor=\"middle\">5\u003c/text>\u003ctext x=\"191.4\" y=\"98\" text-anchor=\"middle\">6\u003c/text>\u003ctext x=\"220.0\" y=\"98\" text-anchor=\"middle\">7\u003c/text>\u003ctext x=\"248.6\" y=\"98\" text-anchor=\"middle\">8\u003c/text>\u003ctext x=\"277.1\" y=\"98\" text-anchor=\"middle\">9\u003c/text>\u003ctext x=\"305.7\" y=\"98\" text-anchor=\"middle\">10\u003c/text>\u003ctext x=\"334.3\" y=\"98\" text-anchor=\"middle\">11\u003c/text>\u003ctext x=\"362.9\" y=\"98\" text-anchor=\"middle\">12\u003c/text>\u003ctext x=\"391.4\" y=\"98\" text-anchor=\"middle\">13\u003c/text>\u003ctext x=\"420.0\" y=\"98\" text-anchor=\"middle\">14\u003c/text>\u003c/g>\u003ctext class=\"dg-t\" x=\"90\" y=\"30\">酸性\u003c/text>\u003ctext class=\"dg-t\" x=\"220\" y=\"30\">中性\u003c/text>\u003ctext class=\"dg-t\" x=\"350\" y=\"30\">塩基性\u003c/text>\u003ctext class=\"dg-n2\" x=\"90\" y=\"46\">[H⁺] が大きい\u003c/text>\u003ctext class=\"dg-n2\" x=\"350\" y=\"46\">[OH⁻] が大きい\u003c/text>\u003ctext class=\"dg-n2\" x=\"220\" y=\"128\">pH が 1 小さくなると、[H⁺] は 10倍になる\u003c/text>\u003c/svg>","qs":[{"p":"0.010 mol/L の塩酸の pH はいくつですか。","fig":"","ch":[{"t":"2","why":""},{"t":"1","why":"[H^{+}]＝0.10 mol/L（1.0×10^{-1}）のときの値です。"},{"t":"12","why":"塩基性の値です。酸の水溶液の pH は 7 より小さくなります。"},{"t":"0.010","why":"濃度の数字をそのまま答えています。pH は 10 のべき乗の指数 n です。"}],"ans":0,"steps":["HCl は1価の強酸。[H^{+}] ＝ 0.010 ＝ 1.0×10^{-2} mol/L","pH ＝ 2"],"point":"0.010 ＝ 1.0×10^{-2}。指数の「2」が pH。"},{"p":"0.0050 mol/L の硫酸（2価の強酸）の pH はいくつですか。","fig":"","ch":[{"t":"2","why":""},{"t":"2.3","why":"価数をかけ忘れ、[H^{+}] ＝ 5.0×10^{-3} としています。硫酸は2価です。"},{"t":"3","why":"0.0050 の指数（-3）だけを見ています。2価をかけると 1.0×10^{-2} です。"},{"t":"12","why":"塩基性の値です。硫酸は酸なので pH は 7 より小さいです。"}],"ans":0,"steps":["硫酸は2価の強酸。[H^{+}] ＝ 0.0050 × 2 ＝ 0.010 ＝ 1.0×10^{-2} mol/L","pH ＝ 2"],"point":"[H^{+}] ＝ 濃度 × 価数 × 電離度。価数を忘れない。"},{"p":"pH 3 の水溶液の [H^{+}] は、pH 5 の水溶液の [H^{+}] の何倍ですか。","fig":"","ch":[{"t":"100倍","why":""},{"t":"2倍","why":"pH の差（5－3＝2）をそのまま倍率にしています。pH が1ちがうと10倍です。"},{"t":"10倍","why":"pH が1ちがうときの倍率です。ここは2ちがうので 10×10 です。"},{"t":"1/100","why":"逆です。pH が小さいほうが [H^{+}] は大きいです。"}],"ans":0,"steps":["pH 3：[H^{+}] ＝ 1.0×10^{-3}　pH 5：[H^{+}] ＝ 1.0×10^{-5}","10^{-3} ÷ 10^{-5} ＝ 10^{2} ＝ 100倍"],"point":"pH が 1 小さい → [H^{+}] は 10倍。2小さい → 100倍。"},{"p":"0.0010 mol/L の水酸化ナトリウム水溶液（1価の強塩基）の pH はいくつですか。（[H^{+}][OH^{-}]＝1.0×10^{-14}）","fig":"","ch":[{"t":"11","why":""},{"t":"3","why":"[OH^{-}] の指数（-3）を、そのまま pH にしています。pH は [H^{+}] から出します。"},{"t":"12","why":"濃度を 0.010 mol/L と読みちがえた場合の値です。"},{"t":"14","why":"[OH^{-}] ＝ 1 mol/L のときの値です。"}],"ans":0,"steps":["[OH^{-}] ＝ 0.0010 ＝ 1.0×10^{-3} mol/L","[H^{+}] ＝ 1.0×10^{-14} ÷ 1.0×10^{-3} ＝ 1.0×10^{-11} mol/L","pH ＝ 11"],"point":"塩基は、[OH^{-}] → [H^{+}]（10^{-14} ÷ [OH^{-}]）→ pH の順。または pH ＝ 14 － pOH。"},{"p":"0.10 mol/L の酢酸水溶液で、電離度が 0.010 のとき、pH はいくつですか。","fig":"","ch":[{"t":"3","why":""},{"t":"1","why":"電離度を1（ぜんぶ電離）としています。酢酸は弱酸で、電離度は小さいです。"},{"t":"2","why":"電離度を 0.10 と読みちがえています。0.010 です。"},{"t":"5","why":"桁をまちがえています。0.10×0.010 ＝ 1.0×10^{-3} です。"}],"ans":0,"steps":["[H^{+}] ＝ 0.10 × 1（価数）× 0.010 ＝ 1.0×10^{-3} mol/L","pH ＝ 3"],"point":"弱酸は、電離度をかけるのを忘れない。濃度が同じでも、強酸より pH が大きくなる。"}]},{"id":"s3","title":"中和反応と塩","sub":"酸＋塩基 → 塩＋水。塩の水溶液の性質","intro":"\u003cb>中和\u003c/b>：酸と塩基が反応して、\u003cb>塩\u003c/b>と\u003cb>水\u003c/b>ができる反応。本質は \u003cb>H\u003csup>+\u003c/sup> ＋ OH\u003csup>-\u003c/sup> → H\u003csub>2\u003c/sub>O\u003c/b>。\u003cbr>例：HCl ＋ NaOH → NaCl ＋ H\u003csub>2\u003c/sub>O　　H\u003csub>2\u003c/sub>SO\u003csub>4\u003c/sub> ＋ 2NaOH → Na\u003csub>2\u003c/sub>SO\u003csub>4\u003c/sub> ＋ 2H\u003csub>2\u003c/sub>O　　2HCl ＋ Ca(OH)\u003csub>2\u003c/sub> → CaCl\u003csub>2\u003c/sub> ＋ 2H\u003csub>2\u003c/sub>O\u003cbr>\u003cb>塩の水溶液の性質\u003c/b>は、もとの酸と塩基の強さで決まります：強酸＋強塩基 → 中性（NaCl、Na\u003csub>2\u003c/sub>SO\u003csub>4\u003c/sub>）／強酸＋弱塩基 → 酸性（NH\u003csub>4\u003c/sub>Cl）／弱酸＋強塩基 → 塩基性（CH\u003csub>3\u003c/sub>COONa、Na\u003csub>2\u003c/sub>CO\u003csub>3\u003c/sub>）。「強いほうの性質」が出ると覚える。","qs":[{"p":"硫酸と水酸化ナトリウムの中和です。係数の組を選んでください。\u003cbr>H_{2}SO_{4} ＋ □NaOH → Na_{2}SO_{4} ＋ □H_{2}O（左から順）","fig":"","ch":[{"t":"2、2","why":""},{"t":"1、1","why":"Na が左1個、右2個でそろいません。"},{"t":"2、1","why":"H が左（2＋2）4個、右2個でそろいません。"},{"t":"1、2","why":"Na が左1個、右2個でそろいません。"}],"ans":0,"steps":["右の Na が2個 → NaOH は2。","左の H は 2＋2＝4個 → H_{2}O は2（O もそろう：4個）。"],"point":"硫酸は2価。NaOH（1価）は2個必要。"},{"p":"中和でできる「塩」とは、どのような物質ですか。","fig":"","ch":[{"t":"酸の陰イオンと塩基の陽イオンからできる化合物","why":""},{"t":"食塩（NaCl）だけのこと","why":"NaCl は塩の1つです。CH_{3}COONa、Na_{2}SO_{4}、NH_{4}Cl なども塩です。"},{"t":"水の別名","why":"水は塩とは別の生成物です。中和では塩と水ができます。"},{"t":"酸と塩基の混合物","why":"混合物ではなく、反応してできた新しい化合物です。"}],"ans":0,"steps":["HCl ＋ NaOH → NaCl ＋ H_{2}O","塩 NaCl は、酸の Cl^{-} と塩基の Na^{+} からできている。"],"point":"塩は「酸の陰イオン ＋ 塩基の陽イオン」。食塩だけではない。"},{"p":"次の塩のうち、水溶液が塩基性を示すものはどれですか。","fig":"","ch":[{"t":"CH_{3}COONa（酢酸ナトリウム）","why":""},{"t":"NaCl（塩化ナトリウム）","why":"強酸 HCl と強塩基 NaOH からできた塩で、中性です。"},{"t":"NH_{4}Cl（塩化アンモニウム）","why":"強酸 HCl と弱塩基 NH_{3} からできた塩で、酸性です。"},{"t":"Na_{2}SO_{4}（硫酸ナトリウム）","why":"強酸 H_{2}SO_{4} と強塩基 NaOH からできた塩で、中性です。"}],"ans":0,"steps":["CH_{3}COONa ＝ 弱酸 CH_{3}COOH ＋ 強塩基 NaOH からできた塩。","強いほう（強塩基）の性質が出て、塩基性。"],"point":"弱酸＋強塩基 → 塩基性。「強いほうが勝つ」。"},{"p":"塩化アンモニウム NH_{4}Cl の水溶液は、どんな性質を示しますか。","fig":"","ch":[{"t":"酸性","why":""},{"t":"中性","why":"中性になるのは、強酸と強塩基からできた塩です。NH_{3} は弱塩基です。"},{"t":"塩基性","why":"塩基性になるのは、弱酸と強塩基からできた塩です。"},{"t":"決まらない","why":"もとの酸・塩基の強さで決まります。HCl は強酸、NH_{3} は弱塩基です。"}],"ans":0,"steps":["NH_{4}Cl ＝ 強酸 HCl ＋ 弱塩基 NH_{3} からできた塩。","強いほう（強酸）の性質が出て、酸性。"],"point":"強酸＋弱塩基 → 酸性。"},{"p":"中和反応の本質を表すイオン反応式はどれですか。","fig":"","ch":[{"t":"H^{+} ＋ OH^{-} → H_{2}O","why":""},{"t":"Na^{+} ＋ Cl^{-} → NaCl","why":"塩ができる式です。中和の本質は、H^{+} と OH^{-} が結びついて水になることです。"},{"t":"2H^{+} → H_{2}","why":"H^{+} どうしは結びつきません。H_{2} が出るのは金属と酸の反応です。"},{"t":"Na^{+} ＋ OH^{-} → NaOH","why":"これは水酸化ナトリウムがとけている状態の逆です。中和ではありません。"}],"ans":0,"steps":["酸の H^{+} と、塩基の OH^{-} が結びついて、水ができる。","塩のイオン（Na^{+}、Cl^{-} など）は水溶液中にそのままある。"],"point":"中和 ＝ H^{+} ＋ OH^{-} → H_{2}O。"}]},{"id":"s4","title":"中和の量的関係と滴定","sub":"a×c×V ＝ b×c′×V′ を使って濃度を求める","intro":"\u003cb>中和点\u003c/b>では、酸が出した H\u003csup>+\u003c/sup> の物質量 ＝ 塩基が出した OH\u003csup>-\u003c/sup> の物質量。\u003cbr>\u003cb>a × c × V ＝ b × c′ × V′\u003c/b>　（a、b：価数　c、c′：モル濃度 mol/L　V、V′：体積。左右で同じ単位にそろえれば mL のままでよい）\u003cbr>【中和滴定の器具】ホールピペット（正確な体積をはかる）、ビュレット（滴下した体積をはかる）、コニカルビーカー。\u003cbr>【指示薬】強酸×強塩基：どちらでもよい／弱酸×強塩基：中和点が塩基性 → \u003cb>フェノールフタレイン\u003c/b>／強酸×弱塩基：中和点が酸性 → \u003cb>メチルオレンジ\u003c/b>。","fig":"\u003csvg class=\"dg\" viewBox=\"0 0 420 160\" role=\"img\" aria-label=\"中和のイメージ図\">\u003ctext class=\"dg-t\" x=\"90\" y=\"20\">酸が出す H⁺\u003c/text>\u003ctext class=\"dg-t\" x=\"330\" y=\"20\">塩基が出す OH⁻\u003c/text>\u003ccircle cx=\"40\" cy=\"60\" r=\"13\" fill=\"#d4442a\"/>\u003ctext class=\"dg-w\" x=\"40\" y=\"65\">H⁺\u003c/text>\u003ccircle cx=\"284\" cy=\"60\" r=\"13\" fill=\"#2a68d4\"/>\u003ctext class=\"dg-w\" x=\"284\" y=\"65\">OH⁻\u003c/text>\u003ccircle cx=\"74\" cy=\"60\" r=\"13\" fill=\"#d4442a\"/>\u003ctext class=\"dg-w\" x=\"74\" y=\"65\">H⁺\u003c/text>\u003ccircle cx=\"318\" cy=\"60\" r=\"13\" fill=\"#2a68d4\"/>\u003ctext class=\"dg-w\" x=\"318\" y=\"65\">OH⁻\u003c/text>\u003ccircle cx=\"108\" cy=\"60\" r=\"13\" fill=\"#d4442a\"/>\u003ctext class=\"dg-w\" x=\"108\" y=\"65\">H⁺\u003c/text>\u003ccircle cx=\"352\" cy=\"60\" r=\"13\" fill=\"#2a68d4\"/>\u003ctext class=\"dg-w\" x=\"352\" y=\"65\">OH⁻\u003c/text>\u003ccircle cx=\"142\" cy=\"60\" r=\"13\" fill=\"#d4442a\"/>\u003ctext class=\"dg-w\" x=\"142\" y=\"65\">H⁺\u003c/text>\u003ccircle cx=\"386\" cy=\"60\" r=\"13\" fill=\"#2a68d4\"/>\u003ctext class=\"dg-w\" x=\"386\" y=\"65\">OH⁻\u003c/text>\u003ctext class=\"dg-t\" x=\"210\" y=\"66\">＝\u003c/text>\u003ctext class=\"dg-n2\" x=\"210\" y=\"110\">中和点では、H⁺ の物質量 ＝ OH⁻ の物質量\u003c/text>\u003ctext class=\"dg-n\" x=\"210\" y=\"140\">a × c × V ＝ b × c′ × V′\u003c/text>\u003c/svg>","qs":[{"p":"0.10 mol/L の塩酸 20 mL を中和するのに、0.10 mol/L の水酸化ナトリウム水溶液は何 mL 必要ですか。","fig":"","ch":[{"t":"20 mL","why":""},{"t":"10 mL","why":"半分にしています。同じ濃度で、どちらも1価なので、同じ体積です。"},{"t":"40 mL","why":"2倍にしています。価数がどちらも1なので、体積の比は 1：1 です。"},{"t":"2.0 mL","why":"桁がちがいます。1×0.10×20 ＝ 1×0.10×V より、V ＝ 20 です。"}],"ans":0,"steps":["1×0.10×20 ＝ 1×0.10×V","V ＝ 20 mL"],"point":"同じ濃度・同じ価数なら、中和に必要な体積は同じ。"},{"p":"0.10 mol/L の硫酸 10 mL を中和するのに、0.10 mol/L の水酸化ナトリウム水溶液は何 mL 必要ですか。","fig":"","ch":[{"t":"20 mL","why":""},{"t":"5.0 mL","why":"価数の2を、逆の向きにかけています。硫酸が2価なので、NaOH はより多く必要です。"},{"t":"10 mL","why":"価数（硫酸は2価）を忘れています。"},{"t":"40 mL","why":"価数の2を二重にかけています。"}],"ans":0,"steps":["2×0.10×10 ＝ 1×0.10×V","2.0 ＝ 0.10×V　より　V ＝ 20 mL"],"point":"価数 a、b を式に入れる。硫酸は a ＝ 2。"},{"p":"濃度不明の酢酸水溶液 10.0 mL を、0.100 mol/L の水酸化ナトリウム水溶液で滴定したところ、12.0 mL 加えたところで中和点に達しました。酢酸のモル濃度は何 mol/L ですか。","fig":"","ch":[{"t":"0.120 mol/L","why":""},{"t":"0.0833 mol/L","why":"10.0÷12.0 のように、体積の比が逆です。c ＝ 0.100×12.0÷10.0 です。"},{"t":"0.240 mol/L","why":"価数を2としています。酢酸は1価です。"},{"t":"0.0600 mol/L","why":"価数を2としたうえで、体積の比も逆にしています。"}],"ans":0,"steps":["酢酸は1価、NaOH も1価。","1×c×10.0 ＝ 1×0.100×12.0","c ＝ 0.120 mol/L"],"point":"酢酸 CH_{3}COOH は1価（H^{+} を出すのは1個だけ）。"},{"p":"濃度不明の希硫酸 20 mL を中和するのに、0.10 mol/L の水酸化ナトリウム水溶液が 40 mL 必要でした。硫酸のモル濃度は何 mol/L ですか。","fig":"","ch":[{"t":"0.10 mol/L","why":""},{"t":"0.20 mol/L","why":"硫酸の価数（2）を忘れています。"},{"t":"0.40 mol/L","why":"価数の2を、硫酸ではなく NaOH のほうにかけています。"},{"t":"0.050 mol/L","why":"2でわるのを2回してしまっています。わるのは1回です。"}],"ans":0,"steps":["2×c×20 ＝ 1×0.10×40","40c ＝ 4.0　より　c ＝ 0.10 mol/L"],"point":"酸のほうの価数が a。硫酸なら a ＝ 2 を、酸の側にかける。"},{"p":"酢酸水溶液を水酸化ナトリウム水溶液で滴定するとき、適切な指示薬はどれですか。","fig":"","ch":[{"t":"フェノールフタレイン","why":""},{"t":"メチルオレンジ","why":"変色域が酸性側です。中和点（塩基性）より前に色が変わってしまいます。"},{"t":"どちらでもよい","why":"弱酸と強塩基の滴定では、中和点が塩基性になるので、指示薬は選びます。"},{"t":"指示薬は不要","why":"色の変化が中和点を知らせるので、指示薬が必要です。"}],"ans":0,"steps":["酢酸（弱酸）＋ NaOH（強塩基）→ CH_{3}COONa（塩基性の塩）","中和点が塩基性 → 塩基性側で色が変わるフェノールフタレインを使う。"],"point":"弱酸×強塩基 → フェノールフタレイン／強酸×弱塩基 → メチルオレンジ。"}]}]};
+</script>
+<script>
+(function () {
+  var KEY = 'kagaku-kiso-' + D.key + '-best', SKEY = 'koukou-rika-streak', CLEAR = 4, MARKS = ['ア', 'イ', 'ウ', 'エ'];
+  var app = document.getElementById('app');
+  var S = { phase: 'list', step: 0, qi: 0, order: [], sel: null, shown: null, results: [], best: loadBest() };
+
+  function loadBest() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
+  function saveBest() { try { localStorage.setItem(KEY, JSON.stringify(S.best)); } catch (e) {} }
+  function ymd(d) { return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); }
+  function today() { return ymd(new Date()); }
+  function yesterday() { var d = new Date(); d.setDate(d.getDate() - 1); return ymd(d); }
+  function loadStreak() { try { return JSON.parse(localStorage.getItem(SKEY)) || { last: '', n: 0, max: 0 }; } catch (e) { return { last: '', n: 0, max: 0 }; } }
+  function markStudied() {
+    try {
+      var st = loadStreak(), t = today();
+      if (st.last === t) return;
+      st.n = (st.last === yesterday()) ? st.n + 1 : 1; st.last = t; st.max = Math.max(st.max || 0, st.n);
+      localStorage.setItem(SKEY, JSON.stringify(st));
+    } catch (e) {}
+  }
+  function streakHtml() {
+    var st = loadStreak(), t = today(), msg, sub = '', on = false;
+    if (st.last === t) { on = true; msg = '🔥 ' + st.n + '日連続で頑張ってるよ！'; if (st.max > st.n) sub = 'これまででいちばん長いのは ' + st.max + '日'; }
+    else if (st.last === yesterday()) { on = true; msg = '🔥 きのうまで ' + st.n + '日連続！'; sub = '今日も1問やると、連続がのびるよ'; }
+    else if (st.max > 0) { msg = 'おかえり！今日からまた、はじめよう'; sub = 'これまででいちばん長いのは ' + st.max + '日。休んでもだいじょうぶ'; }
+    else { msg = '今日の1問から、はじめよう'; sub = '毎日1問でもOK。続けた日数がここに出るよ'; }
+    return '<p class="streak' + (on ? ' on' : '') + '">' + msg + (sub ? '<small>' + sub + '</small>' : '') + '</p>';
+  }
+  // 表記 H_{2}O / 10^{-2} を上付き・下付きに
+  function t(s) { return String(s).replace(/_\{([^}]*)\}/g, '<sub>$1</sub>').replace(/\^\{([^}]*)\}/g, '<sup>$1</sup>'); }
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
+  function cur() { return D.steps[S.step]; }
+
+  function head() {
+    return '<nav class="topnav" aria-label="サイト内の移動"><a href="../index.html">← 高校理科トップ</a></nav>' +
+      '<header><p class="kicker">高校 化学基礎</p><h1>' + D.title + '</h1><p class="lead">' + D.lead + '</p></header>' + streakHtml();
+  }
+  function listView() {
+    var items = D.steps.map(function (st, i) {
+      var b = S.best[st.id], ok = (b || 0) >= CLEAR;
+      return '<button class="step' + (ok ? ' clear' : '') + '" data-act="step" data-i="' + i + '"><span class="no">' + (ok ? '✓' : (i + 1)) + '</span>' +
+        '<span><b>' + st.title + '</b><span class="s">' + st.sub + '</span></span><span class="sc">' + (b != null ? b + '/' + st.qs.length : '') + '</span></button>';
+    }).join('');
+    return '<p class="kicker">ステップ（' + CLEAR + '問以上正解でクリア）</p><div class="steplist">' + items + '</div>' +
+      '<button class="btn sub" data-act="review">確認用：全問題を答えつきで見る</button>';
+  }
+  function introView() {
+    var st = cur();
+    return '<button class="back" data-act="list">← ステップ一覧へ</button>' +
+      '<div class="card"><p class="kicker">ステップ ' + (S.step + 1) + '</p><h2>' + st.title + '</h2><p>' + t(st.intro) + '</p>' + (st.fig || '') + '</div>' +
+      '<button class="btn" data-act="start">問題にチャレンジ（' + st.qs.length + '問）</button>';
+  }
+  function quizView() {
+    var st = cur(), q = st.qs[S.qi], ord = S.order[S.qi], answered = S.sel !== null;
+    var dots = '<div class="dots" aria-hidden="true">' + st.qs.map(function (_, i) { return '<i class="dot ' + (i < S.qi ? 'done' : i === S.qi ? 'now' : '') + '"></i>'; }).join('') + '</div>';
+    var chs = ord.map(function (ci, k) {
+      var c = q.ch[ci], cls = 'ch', res = '';
+      if (answered) { cls += ' done'; if (ci === q.ans) { cls += ' right'; res = '○'; } else if (ci === S.sel) { cls += ' miss'; res = '×'; } if (ci === S.shown) cls += ' shown'; }
+      return '<button class="' + cls + '" data-act="pick" data-i="' + ci + '"><span class="mk">' + MARKS[k] + '</span><span class="ct">' + t(c.t) + '</span><span class="res">' + res + '</span></button>';
+    }).join('');
+    var fb = '';
+    if (answered) {
+      var isAns = S.shown === q.ans, kana = MARKS[ord.indexOf(q.ans)];
+      fb = '<div class="fb" id="fb">';
+      if (isAns) fb += '<div class="why ok"><div class="h">○ ' + (S.sel === q.ans ? 'せいかい！' : 'これが正しい答え') + '</div></div>';
+      else fb += '<div class="why"><div class="h">× ' + MARKS[ord.indexOf(S.shown)] + ' はどうしてちがう？</div>' + t(q.ch[S.shown].why) + '</div><p>正しい答えは <b>' + kana + '</b>。やり方を見てみよう。</p>';
+      fb += '<ol class="steps">' + q.steps.map(function (x) { return '<li>' + t(x) + '</li>'; }).join('') + '</ol>' +
+        '<div class="point"><b>ポイント</b>　' + t(q.point) + '</div><p class="hint">ほかの選択肢をタップすると、その理由が見られるよ。</p>' +
+        '<button class="btn" data-act="next">' + (S.qi + 1 < st.qs.length ? '次の問題へ' : '結果を見る') + '</button></div>';
+    }
+    return dots + '<div class="card"><div class="qno">' + st.title + '　問 ' + (S.qi + 1) + ' / ' + st.qs.length + '</div><p class="q">' + t(q.p) + '</p>' + (q.fig || '') +
+      '<div class="choices">' + chs + '</div></div>' + fb;
+  }
+  function resultView() {
+    var st = cur(), total = st.qs.length, ok = S.results.filter(Boolean).length;
+    var misses = st.qs.filter(function (_, i) { return !S.results[i]; });
+    var cleared = ok >= CLEAR, hasNext = S.step + 1 < D.steps.length;
+    var msg = ok === total ? 'ぜんぶ正解！' : cleared ? 'クリア！まちがえた問題だけ、見ておこう。' : 'もう少し。解説を読んで、もう一度やってみよう。';
+    var list = misses.length ? '<h3>まちがえた問題</h3><ul class="miss-list">' + misses.map(function (q) { return '<li>' + t(q.p.split('<br>')[0]) + '<br>正しい答え：' + t(q.ch[q.ans].t) + '</li>'; }).join('') + '</ul>' : '';
+    return '<div class="card"><p class="kicker">' + st.title + '　けっか</p><p class="score">' + ok + ' / ' + total + '</p><p>' + msg + '</p>' + list + '</div>' +
+      '<div class="row"><button class="btn sub" data-act="start">もういちど</button>' + (hasNext ? '<button class="btn" data-act="step" data-i="' + (S.step + 1) + '">次のステップへ</button>' : '') + '<button class="btn sub" data-act="list">一覧へ</button></div>';
+  }
+  function reviewView() {
+    var secs = D.steps.map(function (st, si) {
+      return '<details class="rvs" open><summary>ステップ' + (si + 1) + '　' + st.title + '（' + st.qs.length + '問）</summary><div class="stack">' +
+        '<p>' + t(st.intro) + '</p>' + (st.fig || '') + st.qs.map(function (q, qi) {
+          var ch = q.ch.map(function (c, i) { var ok = i === q.ans; return '<li class="' + (ok ? 'ok' : '') + '"><span class="rv-m">' + (ok ? '○' : '×') + '</span><div>' + t(c.t) + (ok ? '' : '<div class="rv-why">' + t(c.why) + '</div>') + '</div></li>'; }).join('');
+          return '<div class="card rv"><div class="qno">問' + (qi + 1) + '</div><p class="q">' + t(q.p) + '</p>' + (q.fig || '') + '<ul class="rv-ch">' + ch + '</ul><ol class="steps">' + q.steps.map(function (x) { return '<li>' + t(x) + '</li>'; }).join('') + '</ol><div class="point"><b>ポイント</b>　' + t(q.point) + '</div></div>';
+        }).join('') + '</div></details>';
+    }).join('');
+    return '<button class="back" data-act="list">← ステップ一覧へ</button><div class="card"><h2>確認用：全問題の一覧</h2><p>答えと解説をつけて、全問を並べています（実際の画面では、答えたあとに出る内容です）。</p>' +
+      '<div class="row"><button class="btn sub" data-act="openall" data-d="1">すべてひらく</button><button class="btn sub" data-act="openall" data-d="0">すべてとじる</button></div></div>' + secs;
+  }
+  function render() {
+    var body = S.phase === 'list' ? listView() : S.phase === 'intro' ? introView() : S.phase === 'review' ? reviewView() : S.phase === 'quiz' ? quizView() : resultView();
+    var n = 0; D.steps.forEach(function (st) { n += st.qs.length; });
+    app.innerHTML = head() + body + '<footer>全' + n + '問</footer>';
+  }
+  function startQuiz() {
+    var st = cur(); S.phase = 'quiz'; S.qi = 0; S.sel = null; S.shown = null; S.results = [];
+    S.order = st.qs.map(function (q) { return shuffle(q.ch.map(function (_, i) { return i; })); });
+  }
+  app.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-act]'); if (!b) return;
+    var a = b.getAttribute('data-act'), i = +b.getAttribute('data-i');
+    if (a === 'step') { S.step = i; S.phase = 'intro'; }
+    else if (a === 'start') startQuiz();
+    else if (a === 'list') S.phase = 'list';
+    else if (a === 'review') S.phase = 'review';
+    else if (a === 'openall') { var d = b.getAttribute('data-d') === '1'; Array.prototype.forEach.call(document.querySelectorAll('.rvs'), function (x) { x.open = d; }); return; }
+    else if (a === 'pick') {
+      var q = cur().qs[S.qi];
+      if (S.sel === null) {
+        S.sel = i; S.shown = i; S.results[S.qi] = (i === q.ans); markStudied();
+      } else S.shown = i;
+    }
+    else if (a === 'next') {
+      if (S.qi + 1 < cur().qs.length) { S.qi++; S.sel = null; S.shown = null; }
+      else {
+        var ok = S.results.filter(Boolean).length, id = cur().id;
+        if (S.best[id] == null || ok > S.best[id]) { S.best[id] = ok; saveBest(); }
+        S.phase = 'result';
+      }
+    }
+    render();
+    if (a === 'pick') { var fb = document.getElementById('fb'); if (fb && fb.scrollIntoView) fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+    else window.scrollTo(0, 0);
+  });
+  render();
+})();
+</script>
+</body>
+</html>

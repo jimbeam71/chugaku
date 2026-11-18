@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>物質量と化学反応式｜化学基礎</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f6f4;--grid:rgba(48,120,110,.11);--card:#fff;--fg:#1d2a35;--muted:#55677a;--line:#d3dfe1;--ink:#1f6f7a;--ink-fg:#fff;--good:#187a47;--good-bg:#e4f4ea;--bad:#b3261e;--bad-bg:#fbe9e7;--hl:#ffe27a;--red:#d4442a;--blue:#2a68d4;
+--font-head:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;--font-body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic","Meiryo",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a21;--grid:rgba(150,205,215,.07);--card:#1b2630;--fg:#e8eef3;--muted:#9fb2c1;--line:#2d3d4a;--ink:#7fd0d8;--ink-fg:#0f1a2e;--good:#5bd592;--good-bg:#17342a;--bad:#ff8a80;--bad-bg:#3a2024;--hl:#6b5a14;--red:#ff8d6e;--blue:#6ea8ff;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background-color:var(--bg);color:var(--fg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;font-family:var(--font-body);font-size:17px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 56px}
+main{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+h1,h2,h3{font-family:var(--font-head);text-wrap:balance;margin:0;line-height:1.35}
+h1{font-size:1.8rem}h2{font-size:1.25rem}h3{font-size:1.05rem}p{margin:0}
+sub,sup{line-height:0}
+.kicker{font-family:var(--font-head);font-weight:700;font-size:.85rem;letter-spacing:.12em;color:var(--muted)}
+.lead{color:var(--muted);margin-top:6px}
+.streak{margin:12px 0 0;padding:10px 14px;border-radius:12px;border:2px solid var(--line);background:var(--card);font-weight:700;line-height:1.6}
+.streak small{display:block;font-weight:400;color:var(--muted);font-size:.82rem}
+.streak.on{border-color:#e8a33d;background:#fff7e6;color:#3a2a00}.streak.on small{color:#6b5a30}
+.topnav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.topnav a{font:700 .95rem var(--font-head);color:var(--ink);text-decoration:none;background:var(--card);border:2px solid var(--line);border-radius:999px;padding:8px 16px;min-height:44px;display:inline-flex;align-items:center}
+.topnav a:hover{border-color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.btn{font:inherit;font-family:var(--font-head);font-weight:700;cursor:pointer;border:0;border-radius:12px;background:var(--ink);color:var(--ink-fg);padding:14px 18px;min-height:52px;font-size:1.02rem}
+.btn.sub{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>.btn{flex:1 1 140px}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.back{font:inherit;background:none;border:0;color:var(--ink);cursor:pointer;padding:4px 0;text-align:left;font-weight:700;align-self:flex-start;min-height:44px}
+.steplist{display:flex;flex-direction:column;gap:10px}
+.step{font:inherit;text-align:left;cursor:pointer;display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--fg)}
+.step:hover{border-color:var(--ink)}
+.step .no{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--ink-fg);font:700 1rem var(--font-head);display:grid;place-items:center}
+.step.clear .no{background:var(--good);color:#fff}
+.step b{display:block;font-family:var(--font-head);font-size:1.05rem;line-height:1.4}
+.step span.s{display:block;font-size:.82rem;color:var(--muted);line-height:1.5}
+.step .sc{font:700 .95rem var(--font-head);color:var(--muted);white-space:nowrap}.step.clear .sc{color:var(--good)}
+.dots{display:flex;gap:6px}.dot{flex:1 1 0;height:8px;border-radius:4px;background:var(--line)}
+.dot.done{background:var(--ink)}.dot.now{background:var(--hl);outline:2px solid var(--ink);outline-offset:-2px}
+.qno{font-family:var(--font-head);font-weight:700;color:var(--muted);font-size:.9rem}
+.q{font-size:1.12rem;line-height:1.9}
+.choices{display:grid;gap:10px}
+.ch{font:inherit;cursor:pointer;display:flex;align-items:center;gap:12px;text-align:left;min-height:58px;padding:10px 14px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--fg);min-width:0}
+.ch .mk{flex:0 0 30px;height:30px;border-radius:50%;border:2px solid var(--muted);color:var(--muted);font:700 .85rem var(--font-head);display:grid;place-items:center}
+.ch .ct{flex:1 1 auto;min-width:0;font-size:1.08rem}.ch .res{flex:0 0 auto;font:700 1.3rem var(--font-head)}
+.ch:not(.done):hover{border-color:var(--ink)}
+.ch.right{border-color:var(--good);background:var(--good-bg)}.ch.right .res{color:var(--good)}
+.ch.miss{border-color:var(--bad);background:var(--bad-bg);border-style:dashed}.ch.miss .res{color:var(--bad)}
+.ch.shown{box-shadow:0 0 0 3px var(--ink)}
+.fb{display:flex;flex-direction:column;gap:12px}
+.why{border-radius:12px;padding:12px 14px;background:var(--bad-bg);border-left:5px solid var(--bad)}
+.why.ok{background:var(--good-bg);border-left-color:var(--good)}
+.why .h{font-family:var(--font-head);font-weight:700;margin-bottom:2px}
+.steps{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:6px}
+.point{border-radius:12px;padding:10px 14px;background:color-mix(in srgb,var(--hl) 55%,var(--card))}
+.hint{color:var(--muted);font-size:.88rem}.cap{color:var(--muted);font-size:.9rem}
+.score{font-family:var(--font-head);font-size:2.4rem;font-weight:700;line-height:1.2}
+.miss-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.miss-list li{padding:10px 12px;border-radius:10px;border:1px solid var(--line)}
+.rvs{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 14px}
+.rvs>summary{cursor:pointer;font:700 1.05rem var(--font-head);padding:12px 0;min-height:44px}
+.rvs[open]>summary{border-bottom:1px solid var(--line);margin-bottom:12px}
+.rvs .stack{display:flex;flex-direction:column;gap:14px;padding-bottom:14px}
+.rv{background:var(--bg)}
+.rv-ch{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rv-ch li{display:flex;gap:10px;border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--card);min-width:0}
+.rv-ch li.ok{border-color:var(--good);background:var(--good-bg)}
+.rv-m{flex:0 0 1.4em;font:700 1.1rem var(--font-head)}.rv-why{font-size:.88rem;color:var(--muted)}
+.rtab{border-collapse:collapse;margin:10px 0 0;max-width:100%;display:block;overflow-x:auto}
+.rtab th,.rtab td{padding:6px 10px;border-bottom:1px solid var(--line);white-space:nowrap;text-align:left}
+.dg{width:100%;height:auto;display:block}
+.dg text{text-anchor:middle;fill:var(--fg);font-family:var(--font-body)}
+.dg-c{fill:var(--ink)}.dg-b{fill:var(--card);stroke:var(--ink);stroke-width:2}
+.dg-h{font:700 17px var(--font-head);fill:var(--ink-fg)!important}.dg-w{font:700 10px var(--font-body);fill:#fff!important}
+.dg-h2{font:13px var(--font-body);fill:var(--ink-fg)!important}
+.dg-t{font:700 15px var(--font-head)}.dg-s{font:13px var(--font-body);fill:var(--muted)}
+.dg-n{font:700 13px var(--font-body);fill:var(--ink)!important}.dg-n2{font:13px var(--font-body);fill:var(--muted)}.dg-n3 text{font:700 13px var(--font-body)}
+.dg-a{stroke:var(--ink);stroke-width:2.5;fill:none}
+footer{color:var(--muted);font-size:.82rem;text-align:center}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+var D = {"key":"mol","title":"物質量と化学反応式","sub":"原子量・mol計算・反応式のつくり方・量の計算","lead":"mol（モル）は「個数を数えるための単位」。まず式量を出し、mol を中心に考え、反応式の係数の比でつなぎます。","steps":[{"id":"s1","title":"原子量・分子量・式量","sub":"原子量を足し算して、物質の「重さ」を出す","intro":"原子量（おもなもの）：H=1.0　C=12　N=14　O=16　Na=23　Mg=24　Al=27　S=32　Cl=35.5　K=39　Ca=40　Cu=64。\u003cbr>分子量・式量は、化学式にふくまれる原子の原子量を、\u003cb>個数ぶんかけて足す\u003c/b>だけです。分子でできた物質は\u003cb>分子量\u003c/b>、NaCl のようなイオンの物質は\u003cb>式量\u003c/b>と言います（計算の仕方は同じ）。( ) のうしろの数字は、( ) の中ぜんぶにかかります。","qs":[{"p":"水 H_{2}O の分子量はいくつですか。（H=1.0、O=16）","fig":"","ch":[{"t":"18","why":""},{"t":"16","why":"O（16）だけで、H の分が入っていません。"},{"t":"17","why":"H を1個ぶんしか足していません。H_{2} は H が2個です。"},{"t":"36","why":"H_{2}O 2個ぶん（2H_{2}O）の値です。分子量は1個ぶんです。"}],"ans":0,"steps":["H が2個、O が1個。","1.0×2 ＋ 16×1 ＝ 18"],"point":"化学式の小さい数字（添え字）は、その原子の個数。個数ぶんかけてから足す。"},{"p":"二酸化炭素 CO_{2} の分子量はいくつですか。（C=12、O=16）","fig":"","ch":[{"t":"44","why":""},{"t":"28","why":"O を1個ぶんしか足していません。O_{2} は O が2個です。"},{"t":"32","why":"O_{2} だけです。C（12）が入っていません。"},{"t":"60","why":"O を3個ぶん足しています。CO_{2} の O は2個です。"}],"ans":0,"steps":["C が1個、O が2個。","12×1 ＋ 16×2 ＝ 44"],"point":"CO_{2} の「2」は直前の O にかかる。"},{"p":"塩化ナトリウム NaCl の式量はいくつですか。（Na=23、Cl=35.5）","fig":"","ch":[{"t":"58.5","why":""},{"t":"12.5","why":"引き算をしています。足し算です。"},{"t":"46","why":"Na を2個ぶん足しています。NaCl は Na も Cl も1個ずつです。"},{"t":"117","why":"2倍にしています。NaCl 1組ぶんが式量です。"}],"ans":0,"steps":["NaCl は Na⁺ と Cl⁻ が 1：1 の組成。","23 ＋ 35.5 ＝ 58.5"],"point":"NaCl のように分子をつくらない物質は、組成式の原子量を足したものを「式量」と言う。"},{"p":"水酸化カルシウム Ca(OH)_{2} の式量はいくつですか。（Ca=40、O=16、H=1.0）","fig":"","ch":[{"t":"74","why":""},{"t":"57","why":"( ) の2を無視して、OH を1個ぶんしか数えていません。"},{"t":"58","why":"2を H にだけかけています。( ) の2は O と H のどちらにもかかります。"},{"t":"73","why":"2を O にだけかけています。( ) の2は H にもかかります。"}],"ans":0,"steps":["Ca が1個、OH が2個（O が2個、H が2個）。","40 ＋ (16＋1.0)×2 ＝ 40 ＋ 34 ＝ 74"],"point":"( ) の外の数字は、( ) の中の原子ぜんぶにかける。"},{"p":"硫酸アンモニウム (NH_{4})_{2}SO_{4} の式量はいくつですか。（H=1.0、N=14、O=16、S=32）","fig":"","ch":[{"t":"132","why":""},{"t":"114","why":"(NH_{4}) を1個ぶんしか数えていません。2個です。"},{"t":"96","why":"SO_{4} の部分（32＋64）だけです。"},{"t":"128","why":"( ) の2を N にだけかけて、H にかけ忘れています。"}],"ans":0,"steps":["N が2個、H が 4×2＝8個、S が1個、O が4個。","14×2 ＋ 1.0×8 ＋ 32 ＋ 16×4 ＝ 28＋8＋32＋64 ＝ 132"],"point":"( ) の数字は中のぜんぶにかかる。N と H の個数を、先に数えて書き出すとまちがえない。"}]},{"id":"s2","title":"物質量（mol）の計算","sub":"個数・質量・体積を、mol を中心にして行き来する","intro":"\u003cb>1 mol ＝ 6.0×10\u003csup>23\u003c/sup> 個\u003c/b>（アボガドロ定数 6.0×10\u003csup>23\u003c/sup>/mol）。\u003cb>1 mol あたりの質量（モル質量）\u003c/b>は、原子量・分子量・式量に「g/mol」をつけたもの（例：水 18 g/mol）。\u003cb>気体は標準状態（0℃、1.013×10\u003csup>5\u003c/sup> Pa）で 1 mol ＝ 22.4 L\u003c/b>。\u003cbr>公式をたくさん覚えるより、下の図の「mol が真ん中」で考えるとまちがえません。","fig":"\u003csvg class=\"dg\" viewBox=\"0 0 420 295\" role=\"img\" aria-label=\"物質量を中心にした変換の図\">\u003crect class=\"dg-c\" x=\"150\" y=\"100\" width=\"120\" height=\"60\" rx=\"14\"/>\u003ctext class=\"dg-h\" x=\"210\" y=\"126\">物質量\u003c/text>\u003ctext class=\"dg-h2\" x=\"210\" y=\"148\">n（mol）\u003c/text>\u003crect class=\"dg-b\" x=\"8\" y=\"10\" width=\"140\" height=\"50\" rx=\"10\"/>\u003ctext class=\"dg-t\" x=\"78\" y=\"32\">粒子の数\u003c/text>\u003ctext class=\"dg-s\" x=\"78\" y=\"50\">（個）\u003c/text>\u003crect class=\"dg-b\" x=\"272\" y=\"10\" width=\"140\" height=\"50\" rx=\"10\"/>\u003ctext class=\"dg-t\" x=\"342\" y=\"32\">質量\u003c/text>\u003ctext class=\"dg-s\" x=\"342\" y=\"50\">（g）\u003c/text>\u003crect class=\"dg-b\" x=\"140\" y=\"190\" width=\"140\" height=\"50\" rx=\"10\"/>\u003ctext class=\"dg-t\" x=\"210\" y=\"212\">気体の体積\u003c/text>\u003ctext class=\"dg-s\" x=\"210\" y=\"230\">標準状態（L）\u003c/text>\u003cpath class=\"dg-a\" d=\"M160 100 L110 62\"/>\u003cpath class=\"dg-a\" d=\"M260 100 L310 62\"/>\u003cpath class=\"dg-a\" d=\"M210 160 L210 188\"/>\u003ctext class=\"dg-n\" x=\"76\" y=\"96\">× 6.0×10²³ 個/mol\u003c/text>\u003ctext class=\"dg-n\" x=\"346\" y=\"96\">× モル質量 g/mol\u003c/text>\u003ctext class=\"dg-n\" x=\"300\" y=\"180\">× 22.4 L/mol\u003c/text>\u003ctext class=\"dg-n2\" x=\"210\" y=\"266\">mol → 個・g・L は「かける」\u003c/text>\u003ctext class=\"dg-n2\" x=\"210\" y=\"286\">個・g・L → mol は「わる」\u003c/text>\u003c/svg>","qs":[{"p":"水 H_{2}O 36 g は何 mol ですか。（H=1.0、O=16）","fig":"","ch":[{"t":"2.0 mol","why":""},{"t":"0.50 mol","why":"割り算が逆です（18÷36）。質量を モル質量 でわります（36÷18）。"},{"t":"18 mol","why":"水の分子量（18）をそのまま答えています。"},{"t":"648 mol","why":"質量と分子量をかけています。mol を出すときは、わります。"}],"ans":0,"steps":["水のモル質量は 18 g/mol。","物質量 ＝ 質量 ÷ モル質量 ＝ 36 ÷ 18 ＝ 2.0 mol"],"point":"質量（g）→ mol は「モル質量でわる」。"},{"p":"二酸化炭素 CO_{2} 0.50 mol の質量は何 g ですか。（C=12、O=16）","fig":"","ch":[{"t":"22 g","why":""},{"t":"88 g","why":"わっています（44÷0.50）。mol から質量を出すときは、かけます。"},{"t":"44 g","why":"1 mol ぶんの質量です。0.50 mol ならその半分です。"},{"t":"0.011 g","why":"0.50÷44 をしています。かけ算にします。"}],"ans":0,"steps":["CO_{2} のモル質量は 44 g/mol。","質量 ＝ 物質量 × モル質量 ＝ 0.50 × 44 ＝ 22 g"],"point":"mol → 質量（g）は「モル質量をかける」。"},{"p":"標準状態で 5.6 L の酸素 O_{2} は何 mol ですか。","fig":"","ch":[{"t":"0.25 mol","why":""},{"t":"4.0 mol","why":"22.4÷5.6 をしています。体積を 22.4 でわります。"},{"t":"125 mol","why":"5.6×22.4 をしています。mol は体積を 22.4 L/mol でわって出します。"},{"t":"2.5 mol","why":"桁がちがいます。5.6÷22.4 は 0.25 です。"}],"ans":0,"steps":["標準状態では 1 mol ＝ 22.4 L。","物質量 ＝ 5.6 ÷ 22.4 ＝ 0.25 mol"],"point":"気体の体積（L）→ mol は「22.4 でわる」。"},{"p":"炭素原子 C が 1.2×10^{24} 個あります。何 mol ですか。（アボガドロ定数 6.0×10^{23}/mol）","fig":"","ch":[{"t":"2.0 mol","why":""},{"t":"0.50 mol","why":"6.0×10^{23} ÷ 1.2×10^{24} をしています。わる順番が逆です。"},{"t":"20 mol","why":"桁がちがいます。10^{24} は 10^{23} の10倍なので、1.2×10^{24} ＝ 12×10^{23} です。12÷6.0 ＝ 2.0。"},{"t":"7.2×10^{47} mol","why":"かけています。個数から mol を出すときは、わります。"}],"ans":0,"steps":["1.2×10^{24} ＝ 12×10^{23}。","物質量 ＝ 個数 ÷ 6.0×10^{23} ＝ 12×10^{23} ÷ 6.0×10^{23} ＝ 2.0 mol"],"point":"個数 → mol は「6.0×10^{23} でわる」。指数をそろえてから計算する。"},{"p":"標準状態で 6.72 L のアンモニア NH_{3} の質量は何 g ですか。（H=1.0、N=14）","fig":"","ch":[{"t":"5.1 g","why":""},{"t":"0.30 g","why":"物質量（0.30 mol）をそのまま質量にしています。最後に モル質量（17 g/mol）をかけます。"},{"t":"17 g","why":"1 mol ぶんの質量です。0.30 mol ぶんを出します。"},{"t":"51 g","why":"桁がちがいます。0.30×17 ＝ 5.1 です。"}],"ans":0,"steps":["NH_{3} のモル質量は 17 g/mol。","物質量 ＝ 6.72 ÷ 22.4 ＝ 0.30 mol","質量 ＝ 0.30 × 17 ＝ 5.1 g"],"point":"体積 → mol → 質量 と、mol をはさんで2歩で行く。"}]},{"id":"s3","title":"化学反応式のつくり方","sub":"両辺で原子の数をそろえて、係数をつける","intro":"\u003cb>化学反応式のルール\u003c/b>\u003cbr>① 左に反応物、右に生成物を書き、矢印（→）でつなぐ。\u003cbr>② \u003cb>化学式は変えない\u003c/b>。つけてよいのは\u003cb>係数\u003c/b>だけ（係数1は省略）。\u003cbr>③ 両辺で、\u003cb>原子の種類ごとの個数\u003c/b>を等しくする。\u003cbr>④ 係数は\u003cb>最も簡単な整数の比\u003c/b>にする。\u003cbr>【コツ】いちばん複雑な物質の係数を1とおく → C、H、… の順にそろえ、O はあとで合わせる → 分数が出たら全体を整数倍。","qs":[{"p":"プロパンの完全燃焼の反応式です。係数の組を選んでください。\u003cbr>□C_{3}H_{8} ＋ □O_{2} → □CO_{2} ＋ □H_{2}O（左から順）","fig":"","ch":[{"t":"1、5、3、4","why":""},{"t":"1、3、3、4","why":"O が左6個、右10個（3×2＋4）でそろいません。"},{"t":"1、5、3、8","why":"H が左8個、右16個でそろいません。H_{2}O は4個です。"},{"t":"2、5、6、8","why":"O が左10個、右20個（12＋8）でそろいません。"}],"ans":0,"steps":["C_{3}H_{8} を1とおく。C が3個 → CO_{2} は3。H が8個 → H_{2}O は4。","右の O は 3×2＋4＝10個 → O_{2} は5。"],"point":"炭素 → 水素 → 酸素の順にそろえる。酸素は最後。"},{"p":"酸化鉄(Ⅲ)の還元です。係数の組を選んでください。\u003cbr>□Fe_{2}O_{3} ＋ □CO → □Fe ＋ □CO_{2}（左から順）","fig":"","ch":[{"t":"1、3、2、3","why":""},{"t":"1、1、2、1","why":"O が左4個、右2個でそろいません。"},{"t":"1、2、2、2","why":"O が左5個（3＋2）、右4個でそろいません。"},{"t":"2、6、4、6","why":"原子の数はそろっていますが、全体を2でわれる（最も簡単な整数比になっていない）ので、1、3、2、3 が正解です。"}],"ans":0,"steps":["Fe_{2}O_{3} を1とおく。Fe が2個 → Fe は2。","O：左は 3＋(COの数)。CO を3にすると左の O は6個。右は CO_{2} を3にして 6個。C も 3 ＝ 3 でそろう。"],"point":"係数は「最も簡単な整数比」。全体が同じ数でわれるときは、わっておく。"},{"p":"マグネシウムの燃焼の反応式です。係数の組を選んでください。\u003cbr>□Mg ＋ □O_{2} → □MgO（左から順）","fig":"","ch":[{"t":"2、1、2","why":""},{"t":"1、1、1","why":"O が左2個、右1個でそろいません。"},{"t":"1、2、2","why":"Mg が左1個、右2個でそろいません。"},{"t":"2、2、2","why":"O が左4個、右2個でそろいません。"}],"ans":0,"steps":["O_{2} は O が2個。右の MgO に O を2個そろえるため、MgO を2。","MgO が2なら Mg も2個必要 → Mg を2。"],"point":"O_{2} は「O が2個」ひとかたまり。MgO の係数で右の O をそろえる。"},{"p":"アルミニウムと塩酸の反応です。係数の組を選んでください。\u003cbr>□Al ＋ □HCl → □AlCl_{3} ＋ □H_{2}（左から順）","fig":"","ch":[{"t":"2、6、2、3","why":""},{"t":"1、3、1、3","why":"H が左3個、右6個でそろいません。"},{"t":"2、3、2、3","why":"Cl が左3個、右6個（3×2）でそろいません。"},{"t":"1、6、1、3","why":"Cl が左6個、右3個でそろいません。"}],"ans":0,"steps":["AlCl_{3} を1とおくと、Al が1、Cl が3 → HCl が3。H が3個 → H_{2} は 3/2。","分数をなくすため全体を2倍 → 2Al ＋ 6HCl → 2AlCl_{3} ＋ 3H_{2}"],"point":"分数の係数が出たら、全体を整数倍して、整数にする。"},{"p":"水素と酸素から水ができる反応です。正しい化学反応式はどれですか。","fig":"","ch":[{"t":"2H_{2} ＋ O_{2} → 2H_{2}O","why":""},{"t":"H_{2} ＋ O_{2} → H_{2}O","why":"O が左2個、右1個でそろっていません。"},{"t":"2H_{2} ＋ 2O_{2} → 2H_{2}O","why":"O が左4個、右2個でそろっていません。"},{"t":"H_{2} ＋ O → H_{2}O","why":"酸素は O_{2} という分子です。化学式を勝手に O に変えてはいけません。"}],"ans":0,"steps":["H_{2}O を2にすると、右は H が4個、O が2個。","左は H_{2} を2、O_{2} を1にそろえる。"],"point":"そろえるのは係数だけ。化学式（H_{2}、O_{2} など）は変えない。"}]},{"id":"s4","title":"反応式と物質量の計算","sub":"係数の比＝mol の比を使って、量を求める","intro":"反応式の\u003cb>係数の比 ＝ 物質量（mol）の比\u003c/b>。気体どうしなら、同じ温度・圧力で\u003cb>体積の比\u003c/b>にもなります。ただし\u003cb>質量の比は係数の比になりません\u003c/b>。\u003cbr>【手順】①与えられた量を mol にする → ②係数の比で、求めたい物質の mol を出す → ③ g や L にもどす。","fig":"\u003ctable class=\"rtab\">\u003ctr>\u003cth>\u003c/th>\u003cth>2H\u003csub>2\u003c/sub>\u003c/th>\u003cth>O\u003csub>2\u003c/sub>\u003c/th>\u003cth>2H\u003csub>2\u003c/sub>O\u003c/th>\u003c/tr>\u003ctr>\u003ctd>係数の比\u003c/td>\u003ctd>2\u003c/td>\u003ctd>1\u003c/td>\u003ctd>2\u003c/td>\u003c/tr>\u003ctr>\u003ctd>物質量\u003c/td>\u003ctd>2 mol\u003c/td>\u003ctd>1 mol\u003c/td>\u003ctd>2 mol\u003c/td>\u003c/tr>\u003ctr>\u003ctd>質量\u003c/td>\u003ctd>4 g\u003c/td>\u003ctd>32 g\u003c/td>\u003ctd>36 g\u003c/td>\u003c/tr>\u003ctr>\u003ctd>体積（標準状態）\u003c/td>\u003ctd>44.8 L\u003c/td>\u003ctd>22.4 L\u003c/td>\u003ctd>（液体）\u003c/td>\u003c/tr>\u003c/table>\u003cp class=\"cap\">係数の比 ＝ 物質量の比。質量の比は 4：32：36 で、係数の比とはちがいます。\u003c/p>","qs":[{"p":"2H_{2} ＋ O_{2} → 2H_{2}O　水素 0.40 mol から、水は何 mol できますか。","fig":"","ch":[{"t":"0.40 mol","why":""},{"t":"0.20 mol","why":"係数の比は 2：2 ＝ 1：1 です。半分にはなりません。"},{"t":"0.80 mol","why":"2倍にしています。H_{2} と H_{2}O の係数はどちらも2です。"},{"t":"0.16 mol","why":"0.40 に 0.40 をかけています。係数の比で考えます。"}],"ans":0,"steps":["H_{2}：H_{2}O ＝ 2：2 ＝ 1：1。","H_{2} が 0.40 mol なら、H_{2}O も 0.40 mol。"],"point":"係数の比 ＝ mol の比。同じ係数なら、同じ mol。"},{"p":"CH_{4} ＋ 2O_{2} → CO_{2} ＋ 2H_{2}O　メタン 8.0 g を完全燃焼させるのに必要な酸素は、標準状態で何 L ですか。（H=1.0、C=12）","fig":"","ch":[{"t":"22.4 L","why":""},{"t":"11.2 L","why":"メタンの mol（0.50）をそのまま酸素にしています。係数の比は CH_{4}：O_{2} ＝ 1：2 です。"},{"t":"44.8 L","why":"酸素を 2.0 mol としています。メタンは 0.50 mol なので、O_{2} は 0.50×2 ＝ 1.0 mol です。"},{"t":"5.6 L","why":"質量を 32（O_{2}）でわっています。メタンの質量はメタンのモル質量（16）でわります。"}],"ans":0,"steps":["CH_{4} のモル質量 16 g/mol。8.0÷16 ＝ 0.50 mol","CH_{4}：O_{2} ＝ 1：2 → O_{2} は 1.0 mol","体積 ＝ 1.0 × 22.4 ＝ 22.4 L"],"point":"質量 → mol（自分のモル質量） → 係数の比 → L（×22.4）。"},{"p":"2Mg ＋ O_{2} → 2MgO　マグネシウム 4.8 g が完全に酸化されると、酸化マグネシウム MgO（式量 40）は何 g できますか。（Mg=24）","fig":"","ch":[{"t":"8.0 g","why":""},{"t":"4.0 g","why":"MgO を 0.10 mol としています。Mg：MgO は 2：2 ＝ 1：1 なので、Mg と同じ 0.20 mol です。"},{"t":"3.2 g","why":"反応する酸素 O_{2}（0.10 mol）の質量です。聞かれているのは MgO の質量です。"},{"t":"9.6 g","why":"質量を係数の比（2倍）にしています。係数の比は mol の比で、質量の比ではありません。"}],"ans":0,"steps":["Mg：4.8÷24 ＝ 0.20 mol","Mg：MgO ＝ 2：2 → MgO も 0.20 mol","質量 ＝ 0.20 × 40 ＝ 8.0 g"],"point":"質量にもどすときは、「求めたい物質の」モル質量をかける。"},{"p":"2KClO_{3} → 2KCl ＋ 3O_{2}　塩素酸カリウム KClO_{3}（式量 122.5）24.5 g を完全に分解すると、酸素は標準状態で何 L できますか。","fig":"","ch":[{"t":"6.72 L","why":""},{"t":"4.48 L","why":"O_{2} を 0.20 mol（KClO_{3} と同じ）としています。係数の比は KClO_{3}：O_{2} ＝ 2：3 です。"},{"t":"8.96 L","why":"KClO_{3} の係数2をそのままかけています（0.40 mol）。"},{"t":"13.44 L","why":"係数3をそのままかけています（0.60 mol）。2：3 の比なので 0.20×3/2 です。"}],"ans":0,"steps":["KClO_{3}：24.5÷122.5 ＝ 0.200 mol","KClO_{3}：O_{2} ＝ 2：3 → O_{2} ＝ 0.200×3/2 ＝ 0.300 mol","体積 ＝ 0.300 × 22.4 ＝ 6.72 L"],"point":"係数の比は「求める物質の係数 ÷ 与えられた物質の係数」をかける。"},{"p":"Zn ＋ 2HCl → ZnCl_{2} ＋ H_{2}　亜鉛 6.5 g（Zn=65）に塩酸を十分に加えました。発生する水素は標準状態で何 L ですか。","fig":"","ch":[{"t":"2.24 L","why":""},{"t":"4.48 L","why":"HCl の係数2をかけています。Zn：H_{2} ＝ 1：1 です。"},{"t":"22.4 L","why":"H_{2} を 1 mol としています。Zn は 0.10 mol です。"},{"t":"1.12 L","why":"半分にしています。Zn と H_{2} の係数はどちらも1です。"}],"ans":0,"steps":["Zn：6.5÷65 ＝ 0.10 mol","Zn：H_{2} ＝ 1：1 → H_{2} は 0.10 mol","体積 ＝ 0.10 × 22.4 ＝ 2.24 L"],"point":"「十分な塩酸」と書いてあれば、足りなくなるのは Zn のほう。Zn の量で答えが決まる。"}]}]};
+</script>
+<script>
+(function () {
+  var KEY = 'kagaku-kiso-' + D.key + '-best', SKEY = 'koukou-rika-streak', CLEAR = 4, MARKS = ['ア', 'イ', 'ウ', 'エ'];
+  var app = document.getElementById('app');
+  var S = { phase: 'list', step: 0, qi: 0, order: [], sel: null, shown: null, results: [], best: loadBest() };
+
+  function loadBest() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
+  function saveBest() { try { localStorage.setItem(KEY, JSON.stringify(S.best)); } catch (e) {} }
+  function ymd(d) { return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); }
+  function today() { return ymd(new Date()); }
+  function yesterday() { var d = new Date(); d.setDate(d.getDate() - 1); return ymd(d); }
+  function loadStreak() { try { return JSON.parse(localStorage.getItem(SKEY)) || { last: '', n: 0, max: 0 }; } catch (e) { return { last: '', n: 0, max: 0 }; } }
+  function markStudied() {
+    try {
+      var st = loadStreak(), t = today();
+      if (st.last === t) return;
+      st.n = (st.last === yesterday()) ? st.n + 1 : 1; st.last = t; st.max = Math.max(st.max || 0, st.n);
+      localStorage.setItem(SKEY, JSON.stringify(st));
+    } catch (e) {}
+  }
+  function streakHtml() {
+    var st = loadStreak(), t = today(), msg, sub = '', on = false;
+    if (st.last === t) { on = true; msg = '🔥 ' + st.n + '日連続で頑張ってるよ！'; if (st.max > st.n) sub = 'これまででいちばん長いのは ' + st.max + '日'; }
+    else if (st.last === yesterday()) { on = true; msg = '🔥 きのうまで ' + st.n + '日連続！'; sub = '今日も1問やると、連続がのびるよ'; }
+    else if (st.max > 0) { msg = 'おかえり！今日からまた、はじめよう'; sub = 'これまででいちばん長いのは ' + st.max + '日。休んでもだいじょうぶ'; }
+    else { msg = '今日の1問から、はじめよう'; sub = '毎日1問でもOK。続けた日数がここに出るよ'; }
+    return '<p class="streak' + (on ? ' on' : '') + '">' + msg + (sub ? '<small>' + sub + '</small>' : '') + '</p>';
+  }
+  // 表記 H_{2}O / 10^{-2} を上付き・下付きに
+  function t(s) { return String(s).replace(/_\{([^}]*)\}/g, '<sub>$1</sub>').replace(/\^\{([^}]*)\}/g, '<sup>$1</sup>'); }
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
+  function cur() { return D.steps[S.step]; }
+
+  function head() {
+    return '<nav class="topnav" aria-label="サイト内の移動"><a href="../index.html">← 高校理科トップ</a></nav>' +
+      '<header><p class="kicker">高校 化学基礎</p><h1>' + D.title + '</h1><p class="lead">' + D.lead + '</p></header>' + streakHtml();
+  }
+  function listView() {
+    var items = D.steps.map(function (st, i) {
+      var b = S.best[st.id], ok = (b || 0) >= CLEAR;
+      return '<button class="step' + (ok ? ' clear' : '') + '" data-act="step" data-i="' + i + '"><span class="no">' + (ok ? '✓' : (i + 1)) + '</span>' +
+        '<span><b>' + st.title + '</b><span class="s">' + st.sub + '</span></span><span class="sc">' + (b != null ? b + '/' + st.qs.length : '') + '</span></button>';
+    }).join('');
+    return '<p class="kicker">ステップ（' + CLEAR + '問以上正解でクリア）</p><div class="steplist">' + items + '</div>' +
+      '<button class="btn sub" data-act="review">確認用：全問題を答えつきで見る</button>';
+  }
+  function introView() {
+    var st = cur();
+    return '<button class="back" data-act="list">← ステップ一覧へ</button>' +
+      '<div class="card"><p class="kicker">ステップ ' + (S.step + 1) + '</p><h2>' + st.title + '</h2><p>' + t(st.intro) + '</p>' + (st.fig || '') + '</div>' +
+      '<button class="btn" data-act="start">問題にチャレンジ（' + st.qs.length + '問）</button>';
+  }
+  function quizView() {
+    var st = cur(), q = st.qs[S.qi], ord = S.order[S.qi], answered = S.sel !== null;
+    var dots = '<div class="dots" aria-hidden="true">' + st.qs.map(function (_, i) { return '<i class="dot ' + (i < S.qi ? 'done' : i === S.qi ? 'now' : '') + '"></i>'; }).join('') + '</div>';
+    var chs = ord.map(function (ci, k) {
+      var c = q.ch[ci], cls = 'ch', res = '';
+      if (answered) { cls += ' done'; if (ci === q.ans) { cls += ' right'; res = '○'; } else if (ci === S.sel) { cls += ' miss'; res = '×'; } if (ci === S.shown) cls += ' shown'; }
+      return '<button class="' + cls + '" data-act="pick" data-i="' + ci + '"><span class="mk">' + MARKS[k] + '</span><span class="ct">' + t(c.t) + '</span><span class="res">' + res + '</span></button>';
+    }).join('');
+    var fb = '';
+    if (answered) {
+      var isAns = S.shown === q.ans, kana = MARKS[ord.indexOf(q.ans)];
+      fb = '<div class="fb" id="fb">';
+      if (isAns) fb += '<div class="why ok"><div class="h">○ ' + (S.sel === q.ans ? 'せいかい！' : 'これが正しい答え') + '</div></div>';
+      else fb += '<div class="why"><div class="h">× ' + MARKS[ord.indexOf(S.shown)] + ' はどうしてちがう？</div>' + t(q.ch[S.shown].why) + '</div><p>正しい答えは <b>' + kana + '</b>。やり方を見てみよう。</p>';
+      fb += '<ol class="steps">' + q.steps.map(function (x) { return '<li>' + t(x) + '</li>'; }).join('') + '</ol>' +
+        '<div class="point"><b>ポイント</b>　' + t(q.point) + '</div><p class="hint">ほかの選択肢をタップすると、その理由が見られるよ。</p>' +
+        '<button class="btn" data-act="next">' + (S.qi + 1 < st.qs.length ? '次の問題へ' : '結果を見る') + '</button></div>';
+    }
+    return dots + '<div class="card"><div class="qno">' + st.title + '　問 ' + (S.qi + 1) + ' / ' + st.qs.length + '</div><p class="q">' + t(q.p) + '</p>' + (q.fig || '') +
+      '<div class="choices">' + chs + '</div></div>' + fb;
+  }
+  function resultView() {
+    var st = cur(), total = st.qs.length, ok = S.results.filter(Boolean).length;
+    var misses = st.qs.filter(function (_, i) { return !S.results[i]; });
+    var cleared = ok >= CLEAR, hasNext = S.step + 1 < D.steps.length;
+    var msg = ok === total ? 'ぜんぶ正解！' : cleared ? 'クリア！まちがえた問題だけ、見ておこう。' : 'もう少し。解説を読んで、もう一度やってみよう。';
+    var list = misses.length ? '<h3>まちがえた問題</h3><ul class="miss-list">' + misses.map(function (q) { return '<li>' + t(q.p.split('<br>')[0]) + '<br>正しい答え：' + t(q.ch[q.ans].t) + '</li>'; }).join('') + '</ul>' : '';
+    return '<div class="card"><p class="kicker">' + st.title + '　けっか</p><p class="score">' + ok + ' / ' + total + '</p><p>' + msg + '</p>' + list + '</div>' +
+      '<div class="row"><button class="btn sub" data-act="start">もういちど</button>' + (hasNext ? '<button class="btn" data-act="step" data-i="' + (S.step + 1) + '">次のステップへ</button>' : '') + '<button class="btn sub" data-act="list">一覧へ</button></div>';
+  }
+  function reviewView() {
+    var secs = D.steps.map(function (st, si) {
+      return '<details class="rvs" open><summary>ステップ' + (si + 1) + '　' + st.title + '（' + st.qs.length + '問）</summary><div class="stack">' +
+        '<p>' + t(st.intro) + '</p>' + (st.fig || '') + st.qs.map(function (q, qi) {
+          var ch = q.ch.map(function (c, i) { var ok = i === q.ans; return '<li class="' + (ok ? 'ok' : '') + '"><span class="rv-m">' + (ok ? '○' : '×') + '</span><div>' + t(c.t) + (ok ? '' : '<div class="rv-why">' + t(c.why) + '</div>') + '</div></li>'; }).join('');
+          return '<div class="card rv"><div class="qno">問' + (qi + 1) + '</div><p class="q">' + t(q.p) + '</p>' + (q.fig || '') + '<ul class="rv-ch">' + ch + '</ul><ol class="steps">' + q.steps.map(function (x) { return '<li>' + t(x) + '</li>'; }).join('') + '</ol><div class="point"><b>ポイント</b>　' + t(q.point) + '</div></div>';
+        }).join('') + '</div></details>';
+    }).join('');
+    return '<button class="back" data-act="list">← ステップ一覧へ</button><div class="card"><h2>確認用：全問題の一覧</h2><p>答えと解説をつけて、全問を並べています（実際の画面では、答えたあとに出る内容です）。</p>' +
+      '<div class="row"><button class="btn sub" data-act="openall" data-d="1">すべてひらく</button><button class="btn sub" data-act="openall" data-d="0">すべてとじる</button></div></div>' + secs;
+  }
+  function render() {
+    var body = S.phase === 'list' ? listView() : S.phase === 'intro' ? introView() : S.phase === 'review' ? reviewView() : S.phase === 'quiz' ? quizView() : resultView();
+    var n = 0; D.steps.forEach(function (st) { n += st.qs.length; });
+    app.innerHTML = head() + body + '<footer>全' + n + '問</footer>';
+  }
+  function startQuiz() {
+    var st = cur(); S.phase = 'quiz'; S.qi = 0; S.sel = null; S.shown = null; S.results = [];
+    S.order = st.qs.map(function (q) { return shuffle(q.ch.map(function (_, i) { return i; })); });
+  }
+  app.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-act]'); if (!b) return;
+    var a = b.getAttribute('data-act'), i = +b.getAttribute('data-i');
+    if (a === 'step') { S.step = i; S.phase = 'intro'; }
+    else if (a === 'start') startQuiz();
+    else if (a === 'list') S.phase = 'list';
+    else if (a === 'review') S.phase = 'review';
+    else if (a === 'openall') { var d = b.getAttribute('data-d') === '1'; Array.prototype.forEach.call(document.querySelectorAll('.rvs'), function (x) { x.open = d; }); return; }
+    else if (a === 'pick') {
+      var q = cur().qs[S.qi];
+      if (S.sel === null) {
+        S.sel = i; S.shown = i; S.results[S.qi] = (i === q.ans); markStudied();
+      } else S.shown = i;
+    }
+    else if (a === 'next') {
+      if (S.qi + 1 < cur().qs.length) { S.qi++; S.sel = null; S.shown = null; }
+      else {
+        var ok = S.results.filter(Boolean).length, id = cur().id;
+        if (S.best[id] == null || ok > S.best[id]) { S.best[id] = ok; saveBest(); }
+        S.phase = 'result';
+      }
+    }
+    render();
+    if (a === 'pick') { var fb = document.getElementById('fb'); if (fb && fb.scrollIntoView) fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+    else window.scrollTo(0, 0);
+  });
+  render();
+})();
+</script>
+</body>
+</html>
